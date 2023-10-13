@@ -1,22 +1,28 @@
-import { Box, Button, ButtonOwnProps, Typography, useTheme } from "@mui/material";
+import { Box, Button, ButtonOwnProps } from "@mui/material";
 import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { AppTexts } from "../../consts/texts";
-import { combineStyles } from "../../utils/styleUtils";
-import { IconDog, IconDogBowl, IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
-import { useCallback } from "react";
+import { IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../consts/routes";
+import { Player } from "@lottiefiles/react-lottie-player";
+import dogAnim from "../../assets/animations/dogAnim.json";
 
 const useHomePageStyles = createStyleHook((theme) => {
   return {
     root: {
       display: "flex",
+      height: "100%",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+    },
+    content: {
+      display: "flex",
       flexDirection: { xs: "column", sm: "row" },
       alignItems: "center",
       justifyContent: "center",
       gap: "24px",
-      height: "100%",
     },
     pushRight: {
       marginRight: "24px",
@@ -48,14 +54,17 @@ export const HomePage = () => {
   return (
     <PageContainer>
       <Box sx={styles.root}>
-        <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
-          <IconPaw {...commonIconProps} />
-          {AppTexts.homePage.cta.reportPage}
-        </Button>
-        <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.search)}>
-          <IconSearch {...commonIconProps} />
-          {AppTexts.homePage.cta.searchPage}
-        </Button>
+        <Player autoplay={true} src={dogAnim} loop={true} style={{ width: "300px" }} />
+        <Box sx={styles.content}>
+          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
+            <IconPaw {...commonIconProps} />
+            {AppTexts.homePage.cta.reportPage}
+          </Button>
+          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.search)}>
+            <IconSearch {...commonIconProps} />
+            {AppTexts.homePage.cta.searchPage}
+          </Button>
+        </Box>
       </Box>
     </PageContainer>
   );
