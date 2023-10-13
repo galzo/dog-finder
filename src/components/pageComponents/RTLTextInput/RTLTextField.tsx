@@ -23,10 +23,10 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
       },
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
-          borderColor: alpha(theme.palette.divider, 0.7),
+          borderColor: alpha(theme.palette.primary.main, 0.6),
         },
         "&:hover fieldset": {
-          borderColor: alpha(theme.palette.divider, 0.7),
+          borderColor: alpha(theme.palette.primary.main, 0.6),
         },
       },
     },

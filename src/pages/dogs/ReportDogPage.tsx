@@ -6,6 +6,7 @@ import { UploadImage } from "../../components/reportComponents/UploadImage";
 import { PageSection } from "../../components/pageComponents/PageSection/PageSection";
 import { ReportLocation } from "../../components/reportComponents/ReportLocation";
 import { DogDetails } from "../../components/reportComponents/DogDetails";
+import { OwnerDetails } from "../../components/reportComponents/OwnerDetails";
 
 export const ReportDogPage = () => {
   return (
@@ -17,6 +18,9 @@ export const ReportDogPage = () => {
         </PageSection>
         <PageSection title={AppTexts.reportPage.sections.dogDetails.title} hasDivider={true}>
           <DogDetails />
+        </PageSection>
+        <PageSection title={"פרטים על בעלי הכלב"} hasDivider={true}>
+          <OwnerDetails />
         </PageSection>
         <PageSection title={AppTexts.reportPage.sections.location.title} hasDivider={true}>
           <ReportLocation />
