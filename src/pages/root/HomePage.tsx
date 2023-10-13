@@ -1,9 +1,12 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
-import { PageContainer } from "../components/PageContainer/PageContainer";
-import { createStyleHook } from "../hooks/styleHooks";
-import { AppTexts } from "../consts/texts";
-import { combineStyles } from "../utils/styleUtils";
+import { Box, Button, ButtonOwnProps, Typography, useTheme } from "@mui/material";
+import { PageContainer } from "../../components/PageContainer/PageContainer";
+import { createStyleHook } from "../../hooks/styleHooks";
+import { AppTexts } from "../../consts/texts";
+import { combineStyles } from "../../utils/styleUtils";
 import { IconDog, IconDogBowl, IconPaw, IconSearch } from "@tabler/icons-react";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppRoutes } from "../../consts/routes";
 
 const useHomePageStyles = createStyleHook((theme) => {
   return {
@@ -27,16 +30,23 @@ const useHomePageStyles = createStyleHook((theme) => {
 });
 
 export const HomePage = () => {
-  const theme = useTheme();
   const styles = useHomePageStyles();
+  const navigate = useNavigate();
+
+  const commonButtonProps: ButtonOwnProps = {
+    size: "large",
+    variant: "contained",
+    sx: styles.button,
+  };
+
   return (
     <PageContainer>
       <Box sx={styles.root}>
-        <Button size="large" variant="contained" sx={styles.button}>
+        <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
           <IconPaw style={{ marginRight: "8px" }} stroke={1.5} />
           {AppTexts.homePage.cta.reportPage}
         </Button>
-        <Button size="large" variant="contained" sx={styles.button}>
+        <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.search)}>
           <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
           {AppTexts.homePage.cta.searchPage}
         </Button>

@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import { Box, ThemeProvider } from "@mui/material";
 import { theme } from "../theme/theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage } from "../pages/HomePage";
+import { HomePage } from "../pages/root/HomePage";
 import { AppRoutes } from "../consts/routes";
 import { ReportDogPage } from "../pages/dogs/ReportDogPage";
 import { SearchDogPage } from "../pages/dogs/SearchDogPage";
