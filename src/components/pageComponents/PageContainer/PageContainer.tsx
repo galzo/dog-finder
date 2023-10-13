@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { FC, ReactNode } from "react";
-import { createStyleHook } from "../../hooks/styleHooks";
+import { createStyleHook } from "../../../hooks/styleHooks";
 import { PageToolbar } from "../PageToolbar/PageToolbar";
 
 interface IPageContainerProps {

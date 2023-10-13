@@ -1,5 +1,5 @@
 import { Box, Button, ButtonOwnProps, Typography, useTheme } from "@mui/material";
-import { PageContainer } from "../../components/PageContainer/PageContainer";
+import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { AppTexts } from "../../consts/texts";
 import { combineStyles } from "../../utils/styleUtils";

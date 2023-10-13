@@ -1,6 +1,9 @@
 import { Box, useTheme } from "@mui/material";
-import { createStyleHook } from "../../hooks/styleHooks";
+import { createStyleHook } from "../../../hooks/styleHooks";
 import { IconDog, IconPaw, IconPawFilled } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
+import { AppRoutes } from "../../../consts/routes";
+import { AppShadows } from "../../../consts/shadows";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
@@ -12,8 +15,7 @@ const usePageToolbarStyles = createStyleHook((theme) => {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      boxShadow:
-        "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;",
+      boxShadow: AppShadows.toolbarShadow,
     },
   };
 });
@@ -21,9 +23,19 @@ const usePageToolbarStyles = createStyleHook((theme) => {
 export const PageToolbar = () => {
   const styles = usePageToolbarStyles();
   const theme = useTheme();
+  const navigate = useNavigate();
   return (
     <Box sx={styles.root}>
-      <IconPaw color={theme.palette.primary.light} fill={theme.palette.primary.main} stroke={0.5} size={60} />
+      <IconPaw
+        color={theme.palette.primary.light}
+        fill={theme.palette.primary.main}
+        style={{
+          cursor: "pointer",
+        }}
+        stroke={0.5}
+        size={60}
+        onClick={() => navigate(AppRoutes.root)}
+      />
     </Box>
   );
 };

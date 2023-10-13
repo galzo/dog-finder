@@ -14,6 +14,7 @@ const createTextColor = (color: string) => ({
 });
 
 export const theme = createTheme({
+  direction: "rtl",
   palette: {
     primary: createColor(AppColors.primary),
     secondary: createColor(AppColors.secondary),
