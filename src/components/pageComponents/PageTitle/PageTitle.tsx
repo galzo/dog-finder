@@ -8,7 +8,7 @@ interface PageTitleProps {
 export const PageTitle: FC<PageTitleProps> = ({ text }) => {
   const theme = useTheme();
   return (
-    <Box>
+    <Box marginBottom={"20px"}>
       <Typography variant="h3" color={theme.palette.text.primary}>
         {text}
       </Typography>

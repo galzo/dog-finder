@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../consts/routes";
 import { Player } from "@lottiefiles/react-lottie-player";
 import dogAnim from "../../assets/animations/dogAnim.json";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const useHomePageStyles = createStyleHook((theme) => {
   return {
@@ -14,7 +15,7 @@ const useHomePageStyles = createStyleHook((theme) => {
       display: "flex",
       height: "100%",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: { xs: "center", sm: "flex-start" },
       flexDirection: "column",
     },
     content: {
@@ -38,6 +39,7 @@ const useHomePageStyles = createStyleHook((theme) => {
 
 export const HomePage = () => {
   const styles = useHomePageStyles();
+  const windowSize = useWindowSize();
   const navigate = useNavigate();
 
   const commonButtonProps: ButtonOwnProps = {
@@ -54,7 +56,14 @@ export const HomePage = () => {
   return (
     <PageContainer>
       <Box sx={styles.root}>
-        <Player autoplay={true} src={dogAnim} loop={true} style={{ width: "300px" }} />
+        <Player
+          autoplay={true}
+          src={dogAnim}
+          loop={true}
+          style={{
+            width: windowSize.innerWidth >= 800 ? "450px" : "300px",
+          }}
+        />
         <Box sx={styles.content}>
           <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
             <IconPaw {...commonIconProps} />

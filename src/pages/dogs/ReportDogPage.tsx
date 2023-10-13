@@ -12,13 +12,13 @@ export const ReportDogPage = () => {
     <PageContainer>
       <Box height={"100%"} width={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"}>
         <PageTitle text={AppTexts.reportPage.title} />
-        <PageSection title={AppTexts.reportPage.sections.upload.title} dividerSize="large">
+        <PageSection title={AppTexts.reportPage.sections.upload.title} hasDivider={false}>
           <UploadImage />
         </PageSection>
-        <PageSection title={AppTexts.reportPage.sections.dogDetails.title} dividerSize="small">
+        <PageSection title={AppTexts.reportPage.sections.dogDetails.title} hasDivider={true}>
           <DogDetails />
         </PageSection>
-        <PageSection title={AppTexts.reportPage.sections.location.title} dividerSize="small">
+        <PageSection title={AppTexts.reportPage.sections.location.title} hasDivider={true}>
           <ReportLocation />
         </PageSection>
       </Box>

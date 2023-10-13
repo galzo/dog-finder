@@ -6,7 +6,7 @@ import { PageDivider } from "../PageDivider/PageDivider";
 interface PageSectionProps {
   title: string;
   children: ReactNode;
-  dividerSize: "small" | "large";
+  hasDivider: boolean;
 }
 
 const usePageSectionStyles = createStyleHook((theme) => {
@@ -25,11 +25,11 @@ const usePageSectionStyles = createStyleHook((theme) => {
   };
 });
 
-export const PageSection: FC<PageSectionProps> = ({ title, children, dividerSize }) => {
+export const PageSection: FC<PageSectionProps> = ({ title, children, hasDivider }) => {
   const styles = usePageSectionStyles();
   return (
     <Box sx={styles.section}>
-      <PageDivider size={dividerSize} />
+      {hasDivider && <PageDivider />}
       <Typography variant="h5" sx={styles.sectionTitle}>
         {title}
       </Typography>
