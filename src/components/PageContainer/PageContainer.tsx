@@ -18,6 +18,14 @@ const usePageContainerStyles = createStyleHook((theme) => {
       justifyContent: "flex-start",
       backgroundColor: theme.palette.background.default,
     },
+    content: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100%",
+      width: "100%",
+    },
   };
 });
 
@@ -27,7 +35,7 @@ export const PageContainer: FC<IPageContainerProps> = ({ children }) => {
   return (
     <Box sx={styles.root}>
       <PageToolbar />
-      {children}
+      <Box sx={styles.content}>{children}</Box>
     </Box>
   );
 };
