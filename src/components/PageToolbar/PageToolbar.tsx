@@ -1,5 +1,6 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { createStyleHook } from "../../hooks/styleHooks";
+import { IconDog, IconPaw, IconPawFilled } from "@tabler/icons-react";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
@@ -19,5 +20,10 @@ const usePageToolbarStyles = createStyleHook((theme) => {
 
 export const PageToolbar = () => {
   const styles = usePageToolbarStyles();
-  return <Box sx={styles.root}>{"Toolbar"}</Box>;
+  const theme = useTheme();
+  return (
+    <Box sx={styles.root}>
+      <IconPaw color={theme.palette.primary.light} fill={theme.palette.primary.main} stroke={0.5} size={60} />
+    </Box>
+  );
 };
