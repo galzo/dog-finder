@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Fade } from "@mui/material";
 import React, { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 import { PageToolbar } from "../PageToolbar/PageToolbar";
@@ -34,7 +34,9 @@ export const PageContainer: FC<IPageContainerProps> = ({ children }) => {
   return (
     <Box sx={styles.root}>
       <PageToolbar />
-      <Box sx={styles.content}>{children}</Box>
+      <Fade in timeout={350}>
+        <Box sx={styles.content}>{children}</Box>
+      </Fade>
     </Box>
   );
 };
