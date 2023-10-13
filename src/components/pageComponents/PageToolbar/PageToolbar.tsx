@@ -1,6 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import { IconDog, IconPaw, IconPawFilled } from "@tabler/icons-react";
+import { IconPaw } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../consts/routes";
 import { AppShadows } from "../../../consts/shadows";
@@ -16,6 +16,8 @@ const usePageToolbarStyles = createStyleHook((theme) => {
       alignItems: "center",
       justifyContent: "center",
       boxShadow: AppShadows.toolbarShadow,
+      position: "fixed",
+      zIndex: 10,
     },
   };
 });

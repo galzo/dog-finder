@@ -16,6 +16,7 @@ const useHomePageStyles = createStyleHook((theme) => {
       alignItems: "center",
       justifyContent: "center",
       gap: "24px",
+      height: "100%",
     },
     pushRight: {
       marginRight: "24px",

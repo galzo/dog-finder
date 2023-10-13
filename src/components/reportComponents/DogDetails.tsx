@@ -1,4 +1,4 @@
-import { Box, TextField, TextFieldProps, alpha } from "@mui/material";
+import { Box } from "@mui/material";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { AppTexts } from "../../consts/texts";
 import { RTLTextField } from "../pageComponents/RTLTextInput/RTLTextField";

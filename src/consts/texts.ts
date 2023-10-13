@@ -11,9 +11,9 @@ export const AppTexts = {
       },
       location: {
         title: "מיקום",
-        subtitle: "פרטים אודות מיקום אחרון בו הכלב נצפה או נמצא",
         fields: {
           cta: "לחץ להוספת מיקום",
+          locationDetails: "פרטים נוספים אודות המיקום האחרון בו הכלב נצפה או נמצא",
         },
       },
       dogDetails: {

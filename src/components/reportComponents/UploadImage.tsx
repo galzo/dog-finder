@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { AppTexts } from "../../consts/texts";
-import { IconCamera, IconCameraBolt, IconCameraCheck, IconCameraCode } from "@tabler/icons-react";
+import { IconCameraCode } from "@tabler/icons-react";
 
 export const UploadImage = () => {
   return (

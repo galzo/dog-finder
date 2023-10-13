@@ -11,20 +11,19 @@ const usePageContainerStyles = createStyleHook((theme) => {
   return {
     root: {
       width: "100%",
-      height: "100vh",
+      height: "100%",
+      overflowY: "scroll",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "flex-start",
-      backgroundColor: theme.palette.background.default,
     },
     content: {
+      width: "100%",
+      height: "100%",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100%",
-      width: "100%",
+      marginTop: "80px",
     },
   };
 });
