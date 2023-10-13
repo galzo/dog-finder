@@ -3,7 +3,7 @@ import { PageContainer } from "../../components/PageContainer/PageContainer";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { AppTexts } from "../../consts/texts";
 import { combineStyles } from "../../utils/styleUtils";
-import { IconDog, IconDogBowl, IconPaw, IconSearch } from "@tabler/icons-react";
+import { IconDog, IconDogBowl, IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../consts/routes";
@@ -39,15 +39,20 @@ export const HomePage = () => {
     sx: styles.button,
   };
 
+  const commonIconProps: TablerIconsProps = {
+    style: { marginRight: "8px" },
+    stroke: 1.5,
+  };
+
   return (
     <PageContainer>
       <Box sx={styles.root}>
         <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
-          <IconPaw style={{ marginRight: "8px" }} stroke={1.5} />
+          <IconPaw {...commonIconProps} />
           {AppTexts.homePage.cta.reportPage}
         </Button>
         <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.search)}>
-          <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
+          <IconSearch {...commonIconProps} />
           {AppTexts.homePage.cta.searchPage}
         </Button>
       </Box>
