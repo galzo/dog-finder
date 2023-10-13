@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
+import { PageContainer } from "../../components/PageContainer/PageContainer";
 
 export const ReportDogPage = () => {
-  return <Box>{"Report Dog"}</Box>;
+  return <PageContainer>{"Report Dog"}</PageContainer>;
 };

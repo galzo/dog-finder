@@ -1,5 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
+import { PageContainer } from "../components/PageContainer/PageContainer";
 
 export const HomePage = () => {
-  return <Box>{"Home Page"}</Box>;
+  const theme = useTheme();
+
+  return (
+    <PageContainer>
+      <Typography variant="h3" color={theme.palette.text.secondary}>
+        {"Home page"}
+      </Typography>
+    </PageContainer>
+  );
 };

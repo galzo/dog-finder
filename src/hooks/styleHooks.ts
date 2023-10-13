@@ -51,7 +51,7 @@ export function useStyleHook<TStyleKey, TProps = Record<never, never>>(
   styleGenerator: StyleGenerator<TStyleKey, TProps>,
   props: TProps = {} as TProps
 ) {
-  const theme: any = useTheme();
+  const theme = useTheme();
 
   const renderedStyle = useMemo(() => {
     return styleGenerator(theme, props);
