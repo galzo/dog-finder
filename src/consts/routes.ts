@@ -1,7 +1,7 @@
 export const AppRoutes = {
-  root: "/",
+  root: "/dog-finder",
   dogs: {
-    report: "/dogs/report",
-    search: "/dogs/search",
+    report: "/dog-finder/dogs/report",
+    search: "/dog-finder/dogs/search",
   },
 };
