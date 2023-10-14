@@ -26,6 +26,7 @@ const useAppStyles = createStyleHook(() => {
 export const App = () => {
   const styles = useAppStyles();
 
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={styles.root}>

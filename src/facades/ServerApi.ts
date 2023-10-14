@@ -1,7 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback } from "react";
+import { QueryPaylad } from "./payload.types";
 
-const API_URL = "https://example.com/api/";
+const API_URL = process.env.REACT_APP_API_URL || "";
+
+const build_endpoint = (path: string) => {
+  return `${API_URL}${path}`
+}
 
 class ServerApi {
   constructor(private token: string, private baseUrl: string) {}
@@ -31,6 +36,17 @@ class ServerApi {
 
     if (abortTimeout) clearTimeout(abortTimeout);
     return response;
+  }
+
+  // enter endpoint
+  async query(payload: QueryPaylad) {
+    let url = build_endpoint("/dogfinder/query/");
+    let requestObj = {
+      body: JSON.stringify(payload), 
+      method: "POST"
+    }
+
+    this.fetch(url, requestObj);
   }
 }
 
