@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../consts/routes";
 import { AppShadows } from "../../../consts/shadows";
 import { Player } from "@lottiefiles/react-lottie-player";
+import LoginButton from '../LoginButton/LoginButton';
+import UserComponent from '../UserComponent/UserComponent';
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
@@ -29,6 +31,7 @@ export const PageToolbar = () => {
   const navigate = useNavigate();
   return (
     <Box sx={styles.root}>
+      <UserComponent />
       <IconPaw
         color={theme.palette.primary.light}
         fill={theme.palette.primary.main}
