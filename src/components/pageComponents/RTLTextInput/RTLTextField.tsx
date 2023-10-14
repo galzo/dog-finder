@@ -29,6 +29,12 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
           borderColor: alpha(theme.palette.primary.main, 0.6),
         },
       },
+      "@media (max-width: 500px)": {
+        width: "375px"
+      },
+      "@media (max-width: 400px)": {
+        width: "300px"
+      },
     },
   };
 });
