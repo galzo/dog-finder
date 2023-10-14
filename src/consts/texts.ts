@@ -31,4 +31,8 @@ export const AppTexts = {
       reportPage: "דיווח על כלב",
     },
   },
+  resultsPage: {
+    title: "תוצאות חיפוש",
+    call: "לחץ להתקשרות",
+  }
 };
