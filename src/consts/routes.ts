@@ -3,5 +3,6 @@ export const AppRoutes = {
   dogs: {
     report: "/dog-finder/dogs/report",
     search: "/dog-finder/dogs/search",
+    results: "/dog-finder/dogs/results",
   },
 };
