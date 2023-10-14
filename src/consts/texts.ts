@@ -5,9 +5,9 @@ export const AppTexts = {
   reportPage: {
     title: "דיווח על כלב",
     sections: {
-      upload: {
+      photo: {
         title: "תמונה",
-        cta: "העלה תמונה למאגר",
+        cta: "העלו תמונה ברורה ככל האפשר של הכלב",
       },
       location: {
         title: "מיקום",
