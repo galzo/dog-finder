@@ -4,6 +4,7 @@ import { IconCameraUp } from "@tabler/icons-react";
 import { ChangeEvent, FC, useCallback, useRef } from "react";
 import { acceptableFormats } from "../../../consts/formats";
 import { createStyleHook } from "../../../hooks/styleHooks";
+import { AppShadows } from "../../../consts/shadows";
 
 interface UploadPhotoProps {
   onSelectImage: (file: File) => Promise<void>;
@@ -14,8 +15,10 @@ const useUploadPhotoStyles = createStyleHook((theme) => {
   return {
     root: {
       width: "100%",
+      maxWidth: "500px",
       display: "flex",
       justifyContent: "center",
+      boxShadow: AppShadows.toolbarShadow,
     },
     uploadButon: {
       width: "100%",
@@ -59,7 +62,7 @@ export const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, selectedImage
       />
       <Box sx={styles.uploadButon} onClick={() => imageInputRef?.current?.click()}>
         <IconCameraUp style={{ marginBottom: "8px" }} size={"60px"} strokeWidth={1} />
-        <Typography>{AppTexts.reportPage.sections.photo.cta}</Typography>
+        <Typography>{AppTexts.reportPage.photo.cta}</Typography>
       </Box>
     </Box>
   );

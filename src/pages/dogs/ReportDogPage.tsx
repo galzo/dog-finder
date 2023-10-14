@@ -4,11 +4,9 @@ import { AppTexts } from "../../consts/texts";
 import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
 import { UploadPhoto } from "../../components/reportComponents/DogPhoto/UploadPhoto";
 import { PageSection } from "../../components/pageComponents/PageSection/PageSection";
-import { ReportLocation } from "../../components/reportComponents/ReportLocation";
-import { DogDetails } from "../../components/reportComponents/DogDetails";
-import { OwnerDetails } from "../../components/reportComponents/OwnerDetails";
 import { useImageSelection } from "../../hooks/useImageSelection";
 import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
+import { RTLTextField } from "../../components/pageComponents/RTLTextInput/RTLTextField";
 
 export const ReportDogPage = () => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
@@ -17,18 +15,33 @@ export const ReportDogPage = () => {
     <PageContainer>
       <Box height={"100%"} width={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"}>
         <PageTitle text={AppTexts.reportPage.title} />
-        <PageSection title={AppTexts.reportPage.sections.photo.title} hasDivider={false}>
-          <DogPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} clearSelection={clearSelection} />
-        </PageSection>
-        <PageSection title={AppTexts.reportPage.sections.dogDetails.title} hasDivider={true}>
-          <DogDetails />
-        </PageSection>
-        <PageSection title={"פרטים על בעלי הכלב"} hasDivider={true}>
-          <OwnerDetails />
-        </PageSection>
-        <PageSection title={AppTexts.reportPage.sections.location.title} hasDivider={true}>
-          <ReportLocation />
-        </PageSection>
+        <DogPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} clearSelection={clearSelection} />
+        <RTLTextField label={AppTexts.reportPage.dogDetails.dogRace} type="text" fullWidth margin="normal" />
+        <RTLTextField label={AppTexts.reportPage.dogDetails.dogSize} type="text" fullWidth margin="normal" />
+        <RTLTextField label={AppTexts.reportPage.dogDetails.dogColor} type="text" fullWidth margin="normal" />
+        <RTLTextField label={AppTexts.reportPage.dogDetails.chipNumber} type="number" fullWidth margin="normal" />
+        <RTLTextField
+          label={AppTexts.reportPage.locationDetails.locationDescription}
+          fullWidth
+          type="text"
+          margin="normal"
+        />
+        <RTLTextField
+          rows={5}
+          label={AppTexts.reportPage.extraDetails.extraDetails}
+          fullWidth
+          multiline
+          type="text"
+          margin={"normal"}
+        />
+        <RTLTextField
+          rows={2}
+          label={AppTexts.reportPage.extraDetails.contactDetails}
+          fullWidth
+          multiline
+          type="text"
+          margin={"normal"}
+        />
       </Box>
     </PageContainer>
   );

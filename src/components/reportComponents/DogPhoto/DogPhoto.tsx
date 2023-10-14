@@ -14,6 +14,7 @@ const useDogPhotoStyles = createStyleHook((theme) => {
       display: "flex",
       justifyContent: "center",
       position: "relative",
+      boxShadow: AppShadows.toolbarShadow,
     },
     photo: {
       width: "100%",
@@ -31,7 +32,7 @@ const useDogPhotoStyles = createStyleHook((theme) => {
       backgroundColor: "white",
       right: 15,
       bottom: 15,
-      boxShadow: "box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;",
+      boxShadow: AppShadows.deleteButtonShadow,
       cursor: "pointer",
     },
   };
