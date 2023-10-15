@@ -13,28 +13,30 @@ const useUserComponentStyles = createStyleHook(() => {
       alignItems: "center",
       color: "white",
       columnGap: "20px",
+      position: "absolute",
+      right: 20,
     },
   };
 });
 
 const UserComponent = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const styles = useUserComponentStyles();
 
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-
   if (!isAuthenticated) {
-    return <LoginButton />;
+    return (
+      <Box sx={styles.root}>
+        <LoginButton />
+      </Box>
+    );
   }
 
   if (!user) {
-    return <div>No user</div>;
+    return null;
   }
 
   return (
-    <Box component={"span"} sx={styles.root}>
+    <Box sx={styles.root}>
       {user.picture && <PageImage src={user.picture} alt={user?.name ?? "user-photo"} />}
       <Typography variant="body2">{user.name}</Typography>
       <LogoutButton />
