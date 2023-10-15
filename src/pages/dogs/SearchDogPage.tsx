@@ -12,13 +12,22 @@ import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 export const SearchDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
+  const [isMissingPhoto, setIsMissingPhoto] = useState(false);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
 
   const getServerApi = useGetServerApi();
 
   const onClickSearch = async () => {
+    if (!selectedImageUrl || !selectedImageFile) {
+      setIsMissingPhoto(true);
+      return;
+    }
+
+    setIsMissingPhoto(false);
     setIsLoading(true);
+
     const serverApi = await getServerApi();
 
     if (!selectedImageUrl) {
@@ -45,9 +54,9 @@ export const SearchDogPage = withAuthenticationRequired(() => {
           onSelectImage={onSelectImage}
           selectedImageUrl={selectedImageUrl}
           clearSelection={clearSelection}
-          isError={false}
+          isError={isMissingPhoto}
         />
-        <Button size="large" variant="contained" onClick={onClickSearch} disabled={!selectedImageUrl}>
+        <Button size="large" variant="contained" onClick={onClickSearch}>
           {isLoading ? (
             <CircularProgress />
           ) : (
