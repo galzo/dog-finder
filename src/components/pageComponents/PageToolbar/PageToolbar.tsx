@@ -4,9 +4,7 @@ import { IconPaw } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../consts/routes";
 import { AppShadows } from "../../../consts/shadows";
-import { Player } from "@lottiefiles/react-lottie-player";
-import LoginButton from '../LoginButton/LoginButton';
-import UserComponent from '../UserComponent/UserComponent';
+import UserComponent from "../UserComponent/UserComponent";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
