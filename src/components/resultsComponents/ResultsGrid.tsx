@@ -7,10 +7,10 @@ export type Dog = {
   image: string;
 };
 
-export const ResultsGrid = ({ results }: { results: Dog[] }) => {
+export const ResultsGrid = ({ results }: { results: Dog[] | undefined }) => {
   return (
     <Grid container spacing={2}>
-      {results.map((dog) => {
+      {results?.map((dog) => {
         return (
           <Grid item xs={12} md={6} lg={4} key={dog.id}>
             <DogCard dog={dog} />

@@ -30,5 +30,9 @@ export const AppTexts = {
   resultsPage: {
     title: "תוצאות חיפוש",
     call: "לחץ להתקשרות",
+    error: "תקלה בטעינת התוצאות",
+    noResults: "לא נמצאו תוצאות",
+    refresh: "רענן",
+    loading: "...טוען תוצאות",
   }
 };

@@ -4,7 +4,7 @@ import { Dog } from "./ResultsGrid";
 
 export const DogCard = ({ dog }: { dog: Dog }) => {
   return (
-    <Card>
+    <Card dir="rtl">
       <CardMedia
         image={dog.image}
         component="img"
