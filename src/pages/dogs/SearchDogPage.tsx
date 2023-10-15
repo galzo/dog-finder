@@ -21,10 +21,10 @@ export const SearchDogPage = () => {
 
     const serverApi = await getServerApi()
     const payload = {
-      type: DogStatus.LOST, 
+      type: DogStatus.LOST, // TODO: remove
       img: selectedImageUrl
     }
-    const response = (await serverApi.query(payload)).json() // Or anything else
+    const response = (await serverApi.query(payload)).json()
   };
 
   return (
