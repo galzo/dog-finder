@@ -3,7 +3,7 @@ import { imageMimeType } from "../consts/formats";
 
 export const useImageSelection = () => {
   const [selectedImage, setSelectedImage] = useState<File>();
-  const [imageURL, setImageURL] = useState<string>("");
+  const [imageURL, setImageURL] = useState<string|undefined>();
 
   const onSelectImage = async (file: File) => {
     if (!file.type.match(imageMimeType)) {
@@ -16,7 +16,7 @@ export const useImageSelection = () => {
 
   const clearSelection = () => {
     setSelectedImage(undefined);
-    setImageURL("");
+    setImageURL(undefined);
   };
 
   useEffect(() => {
