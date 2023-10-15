@@ -1,4 +1,4 @@
-enum DogStatus {
+export enum DogStatus {
     LOST = "lost", 
     FOUND = "found"
 }

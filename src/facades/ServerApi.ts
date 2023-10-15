@@ -46,7 +46,7 @@ class ServerApi {
       method: "POST"
     }
 
-    this.fetch(url, requestObj);
+    return this.fetch(url, requestObj);
   }
 }
 

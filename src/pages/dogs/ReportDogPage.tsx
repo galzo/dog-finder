@@ -10,6 +10,7 @@ import { RTLTextField } from "../../components/pageComponents/RTLTextInput/RTLTe
 
 export const ReportDogPage = () => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
+  
 
   return (
     <PageContainer>

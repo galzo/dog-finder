@@ -1,6 +1,7 @@
 export const AppTexts = {
   searchPage: {
     title: "חיפוש אחר כלב",
+    submit: "חיפוש"
   },
   reportPage: {
     title: "דיווח על כלב",
