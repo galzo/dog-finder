@@ -35,10 +35,11 @@ export const SearchDogPage = withAuthenticationRequired(() => {
     }
     const payload = {
       type: DogStatus.LOST, // TODO: remove
-      img: selectedImageUrl,
+      img: selectedImageUrl.replace(/^data:image\/[a-z]+;base64,/, ""),
     };
     const response = await serverApi.query(payload);
 
+    setIsLoading(false);
     if (response.status === 200) {
       setIsSuccess(true);
     } else {
