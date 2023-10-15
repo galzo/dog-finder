@@ -1,10 +1,25 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from '../LoginButton/LoginButton';
-import LogoutButton from '../LogoutButton/LogoutButton';
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../LoginButton/LoginButton";
+import LogoutButton from "../LogoutButton/LogoutButton";
+import { createStyleHook } from "../../../hooks/styleHooks";
+import { Box, Typography } from "@mui/material";
+import { PageImage } from "../PageImage/PageImage";
 
+const useUserComponentStyles = createStyleHook((theme) => {
+  return {
+    root: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      right: 0,
+    },
+  };
+});
 
 const UserComponent = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const styles = useUserComponentStyles();
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -15,22 +30,16 @@ const UserComponent = () => {
   }
 
   if (!user) {
-    return <div>No user</div>;
+    return null;
   }
 
   return (
-    <span style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      color: "white",
-      columnGap: "20px"
-    }}>
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
+    <Box sx={styles.root} component={"span"}>
+      {user.picture && <PageImage src={user.picture} alt={user?.name ?? "user-name"} />}
+      {user.name && <Typography variant="h2">{user.name}</Typography>}
       <LogoutButton />
-    </span>
+    </Box>
   );
-}
+};
 
 export default UserComponent;

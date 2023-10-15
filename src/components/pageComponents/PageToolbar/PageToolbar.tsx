@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../consts/routes";
 import { AppShadows } from "../../../consts/shadows";
 import { Player } from "@lottiefiles/react-lottie-player";
-import LoginButton from '../LoginButton/LoginButton';
-import UserComponent from '../UserComponent/UserComponent';
+import UserComponent from "../UserComponent/UserComponent";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
@@ -22,6 +21,14 @@ const usePageToolbarStyles = createStyleHook((theme) => {
       position: "fixed",
       zIndex: 10,
     },
+    innerContainer: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+    },
   };
 });
 
@@ -31,17 +38,19 @@ export const PageToolbar = () => {
   const navigate = useNavigate();
   return (
     <Box sx={styles.root}>
-      <UserComponent />
-      <IconPaw
-        color={theme.palette.primary.light}
-        fill={theme.palette.primary.main}
-        style={{
-          cursor: "pointer",
-        }}
-        stroke={0.5}
-        size={60}
-        onClick={() => navigate(AppRoutes.root)}
-      />
+      <Box sx={styles.innerContainer}>
+        <IconPaw
+          color={theme.palette.primary.light}
+          fill={theme.palette.primary.main}
+          style={{
+            cursor: "pointer",
+          }}
+          stroke={0.5}
+          size={60}
+          onClick={() => navigate(AppRoutes.root)}
+        />
+        <UserComponent />
+      </Box>
     </Box>
   );
 };
