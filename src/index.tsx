@@ -15,7 +15,7 @@ root.render(
     domain="dog-finder.eu.auth0.com"
     clientId="8AQ2bGZCSUHQ41Et9f139z6aabFNanxG"
     authorizationParams={{
-      redirect_uri: window.location.href,
+      redirect_uri: window.location.origin + '/dog-finder',
       audience: "https://galzo.github.io/dog-finder/",
       scope: "read:dogs"
     }}>
