@@ -1,4 +1,8 @@
 export const AppTexts = {
+  authPage: {
+    loginCta: "התחבר",
+    logoutCta: "התנתק",
+  },
   searchPage: {
     title: "חיפוש אחר כלב",
     submit: "חיפוש",

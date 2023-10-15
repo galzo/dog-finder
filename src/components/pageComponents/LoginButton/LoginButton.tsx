@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { AppTexts } from "../../../consts/texts";
+import { Button } from "@mui/material";
 
-const LoginButton = () => {
+export const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return <Button onClick={() => loginWithRedirect()}>{AppTexts.authPage.loginCta}</Button>;
 };
-
-export default LoginButton;
