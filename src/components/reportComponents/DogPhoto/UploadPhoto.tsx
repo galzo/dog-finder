@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { AppTexts } from "../../../consts/texts";
 import { IconCameraUp } from "@tabler/icons-react";
 import { ChangeEvent, FC, useCallback, useRef } from "react";
@@ -9,9 +9,10 @@ import { AppShadows } from "../../../consts/shadows";
 interface UploadPhotoProps {
   onSelectImage: (file: File) => Promise<void>;
   selectedImageUrl?: string;
+  isError: boolean;
 }
 
-const useUploadPhotoStyles = createStyleHook((theme) => {
+const useUploadPhotoStyles = createStyleHook((theme, props: { isError: boolean }) => {
   return {
     root: {
       width: "100%",
@@ -31,13 +32,15 @@ const useUploadPhotoStyles = createStyleHook((theme) => {
       alignItems: "center",
       cursor: "pointer",
       borderRadius: "8px",
+      border: props.isError ? `4px solid ${theme.palette.error.main}` : "",
     },
   };
 });
 
-export const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, selectedImageUrl }) => {
+export const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, selectedImageUrl, isError }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const styles = useUploadPhotoStyles();
+  const styles = useUploadPhotoStyles({ isError });
+  const theme = useTheme();
 
   const handleChangeImage = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +51,9 @@ export const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, selectedImage
     },
     [onSelectImage]
   );
+
+  const uploadText = isError ? AppTexts.reportPage.photo.ctaError : AppTexts.reportPage.photo.cta;
+  const buttonColors = isError ? theme.palette.error.light : theme.palette.primary.dark;
 
   return (
     <Box sx={styles.root}>
@@ -61,8 +67,8 @@ export const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, selectedImage
         style={{ display: "none" }}
       />
       <Box sx={styles.uploadButon} onClick={() => imageInputRef?.current?.click()}>
-        <IconCameraUp style={{ marginBottom: "8px" }} size={"60px"} strokeWidth={1} />
-        <Typography>{AppTexts.reportPage.photo.cta}</Typography>
+        <IconCameraUp style={{ marginBottom: "8px" }} size={"60px"} strokeWidth={1} color={buttonColors} />
+        <Typography color={buttonColors}>{uploadText}</Typography>
       </Box>
     </Box>
   );

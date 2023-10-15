@@ -1,12 +1,13 @@
 export const AppTexts = {
   searchPage: {
     title: "חיפוש אחר כלב",
-    submit: "חיפוש"
+    submit: "חיפוש",
   },
   reportPage: {
     title: "דיווח על כלב",
     photo: {
       cta: "העלו תמונה ברורה ככל האפשר של הכלב",
+      ctaError: "חסרה תמונה של הכלב. העלו תמונה ברורה ככל האפשר",
     },
     locationDetails: {
       locationDescription: "המיקום בו נמצא",
@@ -21,6 +22,7 @@ export const AppTexts = {
       extraDetails: "מידע נוסף שיעזור לזיהוי הכלב",
       contactDetails: "פרטים ליצירת קשר",
     },
+    cta: "שלח דיווח",
   },
   homePage: {
     cta: {
@@ -35,5 +37,5 @@ export const AppTexts = {
     noResults: "לא נמצאו תוצאות",
     refresh: "רענן",
     loading: "...טוען תוצאות",
-  }
+  },
 };
