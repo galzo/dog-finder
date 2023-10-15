@@ -8,22 +8,23 @@ import { IconSearch } from "@tabler/icons-react";
 import { useGetServerApi } from "../../facades/ServerApi";
 import { DogStatus } from "../../facades/payload.types";
 import { useState } from "react";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
-export const SearchDogPage = () => {
+export const SearchDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isSuccess, setIsSuccess] = useState<boolean|undefined>(undefined);
-  
+  const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
+
 
   const getServerApi = useGetServerApi();
-  
+
 
   const onClickSearch = async () => {
     setIsLoading(true);
     const serverApi = await getServerApi()
 
     if (!selectedImageUrl) {
-      return 
+      return
     }
     const payload = {
       type: DogStatus.LOST, // TODO: remove
@@ -36,7 +37,7 @@ export const SearchDogPage = () => {
     } else {
       setIsSuccess(false)
     }
-    
+
   };
 
   return (
@@ -48,15 +49,15 @@ export const SearchDogPage = () => {
           { 
             isLoading ? <CircularProgress /> : (
               <>
-              <IconSearch style={{ marginRight: "8px" }} stroke={1.5}/>
-              {AppTexts.searchPage.submit}
+                <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
+                {AppTexts.searchPage.submit}
               </>
-              
+
             )
           }
-          
+
         </Button>
       </Box>
     </PageContainer>
   );
-};
+});
