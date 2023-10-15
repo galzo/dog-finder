@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
 import { AppTexts } from "../../consts/texts";
 import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
@@ -11,7 +11,7 @@ import { createStyleHook } from "../../hooks/styleHooks";
 import { IconSend } from "@tabler/icons-react";
 import { useCallback, useMemo, useState } from "react";
 
-const useReportDogPageStyles = createStyleHook((theme) => {
+const useReportDogPageStyles = createStyleHook((theme, props: { isError: boolean }) => {
   return {
     root: {
       display: "flex",
@@ -24,6 +24,9 @@ const useReportDogPageStyles = createStyleHook((theme) => {
       marginTop: "24px",
       marginBottom: "24px",
     },
+    error: {
+      opacity: props.isError ? "100%" : "0%",
+    },
   };
 });
 
@@ -32,7 +35,8 @@ export const ReportDogPage = withAuthenticationRequired(() => {
   const [isMissingImage, setIsMissingImage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
-  const styles = useReportDogPageStyles();
+  const theme = useTheme();
+  const styles = useReportDogPageStyles({ isError: showErrorMessage });
 
   const inputs = {
     dogRace: useTextInput({ isMandatoryInput: true }),
@@ -141,6 +145,9 @@ export const ReportDogPage = withAuthenticationRequired(() => {
           error={!inputs.contact.isTextValid}
         />
 
+        <Typography variant="subtitle1" color={theme.palette.error.main} sx={styles.error}>
+          {AppTexts.reportPage.error}
+        </Typography>
         <Button variant="contained" color="primary" sx={styles.button} onClick={handleSubmitForm}>
           <IconSend style={{ marginRight: "8px" }} />
           {AppTexts.reportPage.cta}

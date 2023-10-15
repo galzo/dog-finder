@@ -33,6 +33,7 @@ const useUploadPhotoStyles = createStyleHook((theme, props: { isError: boolean }
       cursor: "pointer",
       borderRadius: "8px",
       border: props.isError ? `4px solid ${theme.palette.error.main}` : "",
+      transition: "all 200ms ease-in-out",
     },
   };
 });

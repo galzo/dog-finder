@@ -23,6 +23,7 @@ export const AppTexts = {
       contactDetails: "פרטים ליצירת קשר",
     },
     cta: "שלח דיווח",
+    error: "אנא מלאו את כל השדות המסומנים באדום",
   },
   homePage: {
     cta: {
