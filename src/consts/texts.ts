@@ -4,25 +4,21 @@ export const AppTexts = {
   },
   reportPage: {
     title: "דיווח על כלב",
-    sections: {
-      upload: {
-        title: "תמונה",
-        cta: "העלה תמונה למאגר",
-      },
-      location: {
-        title: "מיקום",
-        fields: {
-          cta: "לחץ להוספת מיקום",
-          locationDetails: "פרטים נוספים אודות המיקום האחרון בו הכלב נצפה או נמצא",
-        },
-      },
-      dogDetails: {
-        title: "פרטי הכלב",
-        fields: {
-          chipNumber: "מספר שבב",
-          description: "תיאור כללי של הכלב",
-        },
-      },
+    photo: {
+      cta: "העלו תמונה ברורה ככל האפשר של הכלב",
+    },
+    locationDetails: {
+      locationDescription: "המיקום בו נמצא",
+    },
+    dogDetails: {
+      dogRace: "גזע הכלב",
+      dogSize: "גודל הכלב",
+      dogColor: "צבע הפרווה",
+      chipNumber: "מספר שבב",
+    },
+    extraDetails: {
+      extraDetails: "מידע נוסף שיעזור לזיהוי הכלב",
+      contactDetails: "פרטים ליצירת קשר",
     },
   },
   homePage: {
@@ -31,4 +27,8 @@ export const AppTexts = {
       reportPage: "דיווח על כלב",
     },
   },
+  resultsPage: {
+    title: "תוצאות חיפוש",
+    call: "לחץ להתקשרות",
+  }
 };

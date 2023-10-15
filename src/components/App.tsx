@@ -8,6 +8,7 @@ import { AppRoutes } from "../consts/routes";
 import { ReportDogPage } from "../pages/dogs/ReportDogPage";
 import { SearchDogPage } from "../pages/dogs/SearchDogPage";
 import { createStyleHook } from "../hooks/styleHooks";
+import { ResultsDogPage } from "../pages/dogs/ResultsDogPage";
 
 const useAppStyles = createStyleHook(() => {
   return {
@@ -35,6 +36,7 @@ export const App = () => {
             <Route path={AppRoutes.root} element={<HomePage />} />
             <Route path={AppRoutes.dogs.report} element={<ReportDogPage />} />
             <Route path={AppRoutes.dogs.search} element={<SearchDogPage />} />
+            <Route path={AppRoutes.dogs.results} element={<ResultsDogPage />} />
           </Routes>
         </BrowserRouter>
       </Box>

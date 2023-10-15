@@ -10,7 +10,7 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
   return {
     root: {
       width: "500px",
-      marginBottom: "30px",
+      marginBottom: "8px",
       "& label": {
         left: "unset",
         right: "1.75rem",
@@ -30,10 +30,10 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
         },
       },
       "@media (max-width: 500px)": {
-        width: "375px"
+        width: "375px",
       },
       "@media (max-width: 400px)": {
-        width: "300px"
+        width: "300px",
       },
     },
   };
