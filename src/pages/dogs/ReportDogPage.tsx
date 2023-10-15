@@ -7,9 +7,11 @@ import { PageSection } from "../../components/pageComponents/PageSection/PageSec
 import { useImageSelection } from "../../hooks/useImageSelection";
 import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
 import { RTLTextField } from "../../components/pageComponents/RTLTextInput/RTLTextField";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
-export const ReportDogPage = () => {
+export const ReportDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
+
 
   return (
     <PageContainer>
@@ -45,4 +47,4 @@ export const ReportDogPage = () => {
       </Box>
     </PageContainer>
   );
-};
+});

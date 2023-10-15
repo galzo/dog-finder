@@ -21,5 +21,9 @@ export const theme = createTheme({
     background: createBackgroundColor(AppColors.background, AppColors.paper),
     divider: AppColors.divider,
     text: createTextColor(AppColors.text),
+    action: {
+      disabledBackground: '#878f99',
+      disabled: 'white'
+    }
   },
 });
