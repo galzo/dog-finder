@@ -1,36 +1,47 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from '../LoginButton/LoginButton';
-import LogoutButton from '../LogoutButton/LogoutButton';
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../LoginButton/LoginButton";
+import { LogoutButton } from "../LogoutButton/LogoutButton";
+import { createStyleHook } from "../../../hooks/styleHooks";
+import { Box, Typography } from "@mui/material";
+import { PageImage } from "../PageImage/PageImage";
 
-
-const UserComponent = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-
-  if (!isAuthenticated) {
-    return <LoginButton />;
-  }
-
-  if (!user) {
-    return <div>No user</div>;
-  }
-
-  return (
-    <span style={{
+const useUserComponentStyles = createStyleHook(() => {
+  return {
+    root: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       color: "white",
-      columnGap: "20px"
-    }}>
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
+      columnGap: "20px",
+      position: "absolute",
+      right: 20,
+    },
+  };
+});
+
+const UserComponent = () => {
+  const { user, isAuthenticated } = useAuth0();
+  const styles = useUserComponentStyles();
+
+  if (!isAuthenticated) {
+    return (
+      <Box sx={styles.root}>
+        <LoginButton />
+      </Box>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
+
+  return (
+    <Box sx={styles.root}>
+      {user.picture && <PageImage src={user.picture} alt={user?.name ?? "user-photo"} />}
+      <Typography variant="body2">{user.name}</Typography>
       <LogoutButton />
-    </span>
+    </Box>
   );
-}
+};
 
 export default UserComponent;
