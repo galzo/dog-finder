@@ -8,55 +8,64 @@ import { IconSearch } from "@tabler/icons-react";
 import { useGetServerApi } from "../../facades/ServerApi";
 import { DogStatus } from "../../facades/payload.types";
 import { useState } from "react";
-import { withAuthenticationRequired } from '@auth0/auth0-react';
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 export const SearchDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
+  const [isMissingPhoto, setIsMissingPhoto] = useState(false);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
 
-
   const getServerApi = useGetServerApi();
 
-
   const onClickSearch = async () => {
+    if (!selectedImageUrl || !selectedImageFile) {
+      setIsMissingPhoto(true);
+      return;
+    }
+
+    setIsMissingPhoto(false);
     setIsLoading(true);
-    const serverApi = await getServerApi()
+
+    const serverApi = await getServerApi();
 
     if (!selectedImageUrl) {
-      return
+      return;
     }
     const payload = {
       type: DogStatus.LOST, // TODO: remove
-      img: selectedImageUrl.replace(/^data:image\/[a-z]+;base64,/, "")
-    }
-    const response = (await serverApi.query(payload))
+      img: selectedImageUrl.replace(/^data:image\/[a-z]+;base64,/, ""),
+    };
+    const response = await serverApi.query(payload);
 
     setIsLoading(false);
     if (response.status === 200) {
-      setIsSuccess(true)
+      setIsSuccess(true);
     } else {
-      setIsSuccess(false)
+      setIsSuccess(false);
     }
-
   };
 
   return (
     <PageContainer>
       <Box height={"100%"} width={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={"24px"}>
         <PageTitle text={AppTexts.searchPage.title} />
-        <DogPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} clearSelection={clearSelection} />
-        <Button size="large" variant="contained" onClick={onClickSearch} disabled={!selectedImageUrl}>
-          { 
-            isLoading ? <CircularProgress /> : (
-              <>
-                <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
-                {AppTexts.searchPage.submit}
-              </>
-
-            )
-          }
-
+        <DogPhoto
+          onSelectImage={onSelectImage}
+          selectedImageUrl={selectedImageUrl}
+          clearSelection={clearSelection}
+          isError={isMissingPhoto}
+        />
+        <Button size="large" variant="contained" onClick={onClickSearch}>
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <>
+              <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
+              {AppTexts.searchPage.submit}
+            </>
+          )}
         </Button>
       </Box>
     </PageContainer>

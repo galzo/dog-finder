@@ -42,13 +42,14 @@ interface DogPhotoProps {
   onSelectImage: (file: File) => Promise<void>;
   selectedImageUrl?: string;
   clearSelection: VoidFunction;
+  isError: boolean;
 }
 
-export const DogPhoto: FC<DogPhotoProps> = ({ onSelectImage, selectedImageUrl, clearSelection }) => {
+export const DogPhoto: FC<DogPhotoProps> = ({ onSelectImage, selectedImageUrl, clearSelection, isError }) => {
   const styles = useDogPhotoStyles();
 
   if (!selectedImageUrl) {
-    return <UploadPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} />;
+    return <UploadPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} isError={isError} />;
   }
 
   return (
