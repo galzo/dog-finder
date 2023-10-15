@@ -44,7 +44,7 @@ export const SearchDogPage = () => {
       <Box height={"100%"} width={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={"24px"}>
         <PageTitle text={AppTexts.searchPage.title} />
         <DogPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} clearSelection={clearSelection} />
-        <Button size="large" variant="contained" onClick={onClickSearch} disabled={!!selectedImageUrl}>
+        <Button size="large" variant="contained" onClick={onClickSearch} disabled={!selectedImageUrl}>
           { 
             isLoading ? <CircularProgress /> : (
               <>
