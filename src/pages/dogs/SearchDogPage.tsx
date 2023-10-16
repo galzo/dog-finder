@@ -33,10 +33,12 @@ export const SearchDogPage = withAuthenticationRequired(() => {
     if (!selectedImageUrl) {
       return;
     }
-    const payload = {
-      type: DogStatus.LOST, // TODO: remove
-      img: selectedImageUrl.replace(/^data:image\/[a-z]+;base64,/, ""),
-    };
+    const imageResponse = await fetch(selectedImageUrl);
+    const imageBlob = await imageResponse.blob();
+    const payload  = new FormData();
+    payload.append("type", DogStatus.LOST);
+    payload.append("img", imageBlob);
+
     const response = await serverApi.query(payload);
 
     setIsLoading(false);

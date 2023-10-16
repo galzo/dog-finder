@@ -3,7 +3,6 @@ export enum DogStatus {
     FOUND = "found"
 }
 
-export interface QueryPaylad {
-    type: DogStatus,
-    img: string
+export interface QueryPayload extends FormData {
+    append(type: DogStatus, img: Blob): void
 }
