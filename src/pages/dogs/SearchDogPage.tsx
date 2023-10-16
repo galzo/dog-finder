@@ -6,9 +6,10 @@ import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
 import { useImageSelection } from "../../hooks/useImageSelection";
 import { IconSearch } from "@tabler/icons-react";
 import { useGetServerApi } from "../../facades/ServerApi";
-import { DogStatus } from "../../facades/payload.types";
+import { DogType } from "../../facades/payload.types";
 import { useState } from "react";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { getImageBlob } from "../../utils/imageUtils";
 
 export const SearchDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
@@ -33,12 +34,12 @@ export const SearchDogPage = withAuthenticationRequired(() => {
     if (!selectedImageUrl) {
       return;
     }
-    const imageResponse = await fetch(selectedImageUrl);
-    const imageBlob = await imageResponse.blob();
-    const payload  = new FormData();
-    payload.append("type", DogStatus.LOST);
-    payload.append("img", imageBlob);
-
+    const imageBlob = await getImageBlob(selectedImageUrl)
+    const payload  = {
+      type: DogType.LOST, // TODO: change this to a dynamic value from the select field
+      img: imageBlob
+    };
+    
     const response = await serverApi.query(payload);
 
     setIsLoading(false);

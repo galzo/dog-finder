@@ -1,8 +1,20 @@
-export enum DogStatus {
+export enum DogType {
     LOST = "lost", 
     FOUND = "found"
 }
 
-export interface QueryPayload extends FormData {
-    append(type: DogStatus, img: Blob): void
+
+export interface QueryPayload {
+    type: DogType;
+    img: Blob;
+}
+
+export interface ReportDogPayload {
+    type: DogType;
+    img: Blob;
+    contactName: string;
+    contactPhone: string;
+    breed?: string;
+    contactEmail?: string;
+    contactAdress?: string
 }
