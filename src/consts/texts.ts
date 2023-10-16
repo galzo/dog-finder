@@ -6,6 +6,9 @@ export const AppTexts = {
   searchPage: {
     title: "חיפוש אחר כלב",
     submit: "חיפוש",
+    dogStatus: "סטטוס",
+    lost: "אבד",
+    found: "נמצא"
   },
   reportPage: {
     title: "דיווח על כלב",

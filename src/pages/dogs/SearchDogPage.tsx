@@ -1,14 +1,14 @@
-import { Box, Button, CircularProgress } from "@mui/material";
-import { AppTexts } from "../../consts/texts";
-import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
-import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
-import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
-import { useImageSelection } from "../../hooks/useImageSelection";
-import { IconSearch } from "@tabler/icons-react";
-import { useGetServerApi } from "../../facades/ServerApi";
-import { DogStatus } from "../../facades/payload.types";
-import { useState } from "react";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import {Box, Button, CircularProgress, InputLabel, MenuItem, Select} from "@mui/material";
+import {AppTexts} from "../../consts/texts";
+import {PageContainer} from "../../components/pageComponents/PageContainer/PageContainer";
+import {PageTitle} from "../../components/pageComponents/PageTitle/PageTitle";
+import {DogPhoto} from "../../components/reportComponents/DogPhoto/DogPhoto";
+import {useImageSelection} from "../../hooks/useImageSelection";
+import {IconSearch} from "@tabler/icons-react";
+import {useGetServerApi} from "../../facades/ServerApi";
+import {DogStatus} from "../../facades/payload.types";
+import {useState} from "react";
+import {withAuthenticationRequired} from "@auth0/auth0-react";
 
 export const SearchDogPage = withAuthenticationRequired(() => {
   const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
@@ -16,6 +16,7 @@ export const SearchDogPage = withAuthenticationRequired(() => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
+  const [dogStatus, setDogStatus] = useState<string>(DogStatus.LOST);
 
   const getServerApi = useGetServerApi();
 
@@ -30,13 +31,10 @@ export const SearchDogPage = withAuthenticationRequired(() => {
 
     const serverApi = await getServerApi();
 
-    if (!selectedImageUrl) {
-      return;
-    }
     const imageResponse = await fetch(selectedImageUrl);
     const imageBlob = await imageResponse.blob();
     const payload  = new FormData();
-    payload.append("type", DogStatus.LOST);
+    payload.append("type", dogStatus);
     payload.append("img", imageBlob);
 
     const response = await serverApi.query(payload);
@@ -59,6 +57,17 @@ export const SearchDogPage = withAuthenticationRequired(() => {
           clearSelection={clearSelection}
           isError={isMissingPhoto}
         />
+        <Box sx={{display: "flex", alignItems: "center"}}>
+          <Select
+              value={dogStatus}
+              onChange={(e) => setDogStatus(e.target.value)}
+              style={{ width: '100px' }}
+          >
+            <MenuItem value={DogStatus.LOST}>{AppTexts.searchPage.lost}</MenuItem>
+            <MenuItem value={DogStatus.FOUND}>{AppTexts.searchPage.found}</MenuItem>
+          </Select>
+          <InputLabel>{AppTexts.searchPage.dogStatus}</InputLabel>
+        </Box>
         <Button size="large" variant="contained" onClick={onClickSearch}>
           {isLoading ? (
             <CircularProgress />
