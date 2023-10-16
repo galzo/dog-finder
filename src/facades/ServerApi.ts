@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback } from "react";
-import { QueryPaylad } from "./payload.types";
+import { QueryPayload } from "./payload.types";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
@@ -39,10 +39,10 @@ class ServerApi {
   }
 
   // enter endpoint
-  async query(payload: QueryPaylad) {
+  async query(payload: QueryPayload) {
     let url = build_endpoint("/dogfinder/query/");
     let requestObj = {
-      body: JSON.stringify(payload), 
+      body: payload,
       method: "POST"
     }
 
