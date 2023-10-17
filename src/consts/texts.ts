@@ -13,6 +13,11 @@ export const AppTexts = {
       cta: "העלו תמונה ברורה ככל האפשר של הכלב",
       ctaError: "חסרה תמונה של הכלב. העלו תמונה ברורה ככל האפשר",
     },
+    dogType: {
+      label: "סוג הדיווח - אבוד/נמצא", 
+      lost: "אבוד",
+      found: "נמצא"
+    },
     locationDetails: {
       locationDescription: "המיקום בו נמצא",
     },
@@ -25,9 +30,17 @@ export const AppTexts = {
     extraDetails: {
       extraDetails: "מידע נוסף שיעזור לזיהוי הכלב",
       contactDetails: "פרטים ליצירת קשר",
+      contactName: "שם איש קשר",
+      contactPhone: "מספר טלפון איש קשר",
+      contactEmail: "אימייל איש קשר",
+      contactAddress: "כתובת איש קשר"
     },
     cta: "שלח דיווח",
     error: "אנא מלאו את כל השדות המסומנים באדום",
+    request: {
+      error: "שליחת הטופס נכשלה",
+      success: "הכלב נשמר בהצלחה במאגר!"
+    },
   },
   homePage: {
     cta: {

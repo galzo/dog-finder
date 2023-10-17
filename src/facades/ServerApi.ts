@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback } from "react";
-import { QueryPayload } from "./payload.types";
+import { QueryPayload, ReportDogPayload } from "./payload.types";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
@@ -38,15 +38,37 @@ class ServerApi {
     return response;
   }
 
+  async sendData(url: RequestInfo, data: { [key: string]: any }, method: string, headers?: HeadersInit) {
+    const formData  = new FormData();
+    const token = this.token;
+        
+    for(const value in data) {
+      formData.append(value, data[value]);
+    }
+  
+    const response = await fetch(url, {
+      method: method,
+      body: formData,
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${token}`,
+      }
+    });
+  
+    return response
+  }
+
   // enter endpoint
   async query(payload: QueryPayload) {
     let url = build_endpoint("/dogfinder/query/");
-    let requestObj = {
-      body: payload,
-      method: "POST"
-    }
+    
+    return this.sendData(url, payload, "POST");
+  }
 
-    return this.fetch(url, requestObj);
+  async report_dog(payload: ReportDogPayload) {
+    let url = build_endpoint("/dogfinder/add_document/");
+
+    return this.sendData(url, payload, "POST");
   }
 }
 

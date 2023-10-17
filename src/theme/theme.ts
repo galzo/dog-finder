@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { alpha, createTheme } from "@mui/material";
 import { AppColors } from "../consts/colors";
 
 const {
@@ -13,10 +13,8 @@ const createTextColor = (color: string) => ({
   disabled: color,
 });
 
-export const theme = createTheme({
-  direction: "rtl",
-  palette: {
-    primary: createColor(AppColors.primary),
+const palette = {
+  primary: createColor(AppColors.primary),
     secondary: createColor(AppColors.secondary),
     background: createBackgroundColor(AppColors.background, AppColors.paper),
     divider: AppColors.divider,
@@ -25,5 +23,9 @@ export const theme = createTheme({
       disabledBackground: '#878f99',
       disabled: 'white'
     }
-  },
+}
+
+export const theme = createTheme({
+  direction: "rtl",
+  palette: palette,
 });
