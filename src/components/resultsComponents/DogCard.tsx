@@ -7,7 +7,6 @@ export const DogCard = ({ dog }: { dog: Dog }) => {
   const blob = new Blob([image], { type: "image/*" });
   const urlCreator = window.URL || window.webkitURL;
   const imageUrl = urlCreator.createObjectURL(blob);
-  console.log(imageUrl);
   return (
     <Card dir="rtl">
       <CardMedia
