@@ -3,17 +3,22 @@ import { AppTexts } from "../../consts/texts";
 import { Dog } from "./ResultsGrid";
 
 export const DogCard = ({ dog }: { dog: Dog }) => {
+  const image = dog.image;
+  const blob = new Blob([image], { type: "image/*" });
+  const urlCreator = window.URL || window.webkitURL;
+  const imageUrl = urlCreator.createObjectURL(blob);
+  console.log(imageUrl);
   return (
     <Card dir="rtl">
       <CardMedia
-        image={dog.image}
+        image={imageUrl}
         component="img"
         style={{ objectFit: "contain" }}
         title="Dog Image"
         sx={{ height: 400 }}
       />
       <CardActions>
-        <Link underline="none" href={`tel:${dog.phone}`}>
+        <Link underline="none" href={`tel:${dog.contactPhone}`}>
           {AppTexts.resultsPage.call}
         </Link>
       </CardActions>
