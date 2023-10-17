@@ -81,7 +81,7 @@ class ServerApi {
 
 
   async report_dog(payload: ReportDogPayload) {
-    let url = build_endpoint("/dogfinder/add_document/");
+    let url = build_endpoint("/dogfinder/add_document");
 
     return this.sendData(url, payload, "POST");
   }
