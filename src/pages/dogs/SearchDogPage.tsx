@@ -1,24 +1,31 @@
-import { Box, Button, CircularProgress } from "@mui/material";
+import {
+  Box,
+  Button,
+  SelectChangeEvent,
+} from "@mui/material";
 import { AppTexts } from "../../consts/texts";
 import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
 import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
 import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
 import { useImageSelection } from "../../hooks/useImageSelection";
 import { IconSearch } from "@tabler/icons-react";
-import { useGetServerApi } from "../../facades/ServerApi";
 import { DogType } from "../../facades/payload.types";
 import { useState } from "react";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { getImageBlob } from "../../utils/imageUtils";
+import { SelectInputField } from "../../components/pageComponents/SelectInput/SelectInput";
+import { useNavigate } from "react-router-dom";
 
 export const SearchDogPage = withAuthenticationRequired(() => {
-  const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } = useImageSelection();
+  const navigate = useNavigate();
+  const { onSelectImage, selectedImageFile, selectedImageUrl, clearSelection } =
+    useImageSelection();
+  const [dogType, setDogType] = useState(DogType.LOST);
+  const onDogTypeChange = (event: SelectChangeEvent<unknown>) => {
+    const dogType = event.target.value as DogType;
+    setDogType(dogType);
+  };
   const [isMissingPhoto, setIsMissingPhoto] = useState(false);
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
-
-  const getServerApi = useGetServerApi();
 
   const onClickSearch = async () => {
     if (!selectedImageUrl || !selectedImageFile) {
@@ -26,33 +33,29 @@ export const SearchDogPage = withAuthenticationRequired(() => {
       return;
     }
 
-    setIsMissingPhoto(false);
-    setIsLoading(true);
-
-    const serverApi = await getServerApi();
-
     if (!selectedImageUrl) {
       return;
     }
-    const imageBlob = await getImageBlob(selectedImageUrl)
-    const payload  = {
-      type: DogType.LOST, // TODO: change this to a dynamic value from the select field
-      img: imageBlob
+    const imageBlob = await getImageBlob(selectedImageUrl);
+    const payload = {
+      type: dogType,
+      img: imageBlob,
     };
-    
-    const response = await serverApi.query(payload);
 
-    setIsLoading(false);
-    if (response.status === 200) {
-      setIsSuccess(true);
-    } else {
-      setIsSuccess(false);
-    }
+    navigate("/dog-finder/dogs/results", { state: payload });
+    return;
   };
 
   return (
     <PageContainer>
-      <Box height={"100%"} width={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={"24px"}>
+      <Box
+        height={"100%"}
+        width={"100%"}
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"center"}
+        gap={"24px"}
+      >
         <PageTitle text={AppTexts.searchPage.title} />
         <DogPhoto
           onSelectImage={onSelectImage}
@@ -60,15 +63,10 @@ export const SearchDogPage = withAuthenticationRequired(() => {
           clearSelection={clearSelection}
           isError={isMissingPhoto}
         />
+        <SelectInputField onChange={onDogTypeChange} value={dogType} />
         <Button size="large" variant="contained" onClick={onClickSearch}>
-          {isLoading ? (
-            <CircularProgress />
-          ) : (
-            <>
-              <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
-              {AppTexts.searchPage.submit}
-            </>
-          )}
+          <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
+          {AppTexts.searchPage.submit}
         </Button>
       </Box>
     </PageContainer>

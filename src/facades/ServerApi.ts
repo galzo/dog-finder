@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback } from "react";
-import { QueryPayload, ReportDogPayload } from "./payload.types";
+import { DogType, QueryPayload, ReportDogPayload } from "./payload.types";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
@@ -64,6 +64,21 @@ class ServerApi {
     
     return this.sendData(url, payload, "POST");
   }
+
+  async searchDog(payload: QueryPayload) {
+    const dogType = payload.type;
+    const newPayload = {
+      img: payload.img
+    }
+    let url = build_endpoint("/dogfinder/search_found_dogs/");
+    if (dogType === DogType.FOUND) {
+      url = build_endpoint("/dogfinder/search_lost_dogs/")
+    }
+    
+    
+    return this.sendData(url, newPayload, "POST");
+  }
+
 
   async report_dog(payload: ReportDogPayload) {
     let url = build_endpoint("/dogfinder/add_document/");
