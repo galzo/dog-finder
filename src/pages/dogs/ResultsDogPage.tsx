@@ -16,7 +16,7 @@ const fetcher = async (
   getServerApi: Function
 ) => {
   const serverApi = await getServerApi();
-  const response = await serverApi.query(payload);
+  const response = await serverApi.searchDog(payload);
   if (response?.ok) {
     const json = await response.json();
     return json?.data?.results || [];
