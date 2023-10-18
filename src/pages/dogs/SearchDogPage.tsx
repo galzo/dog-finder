@@ -63,7 +63,9 @@ export const SearchDogPage = withAuthenticationRequired(() => {
           clearSelection={clearSelection}
           isError={isMissingPhoto}
         />
-        <SelectInputField onChange={onDogTypeChange} value={dogType} />
+        <Box mt={3} mb={1}>
+          <SelectInputField onChange={onDogTypeChange} value={dogType} />
+        </Box>
         <Button size="large" variant="contained" onClick={onClickSearch}>
           <IconSearch style={{ marginRight: "8px" }} stroke={1.5} />
           {AppTexts.searchPage.submit}

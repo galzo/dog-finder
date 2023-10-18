@@ -160,14 +160,15 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               clearSelection={clearSelection}
               isError={isMissingImage}
             />
-            <SelectInputField
-              variant="outlined"
-              value={inputs.dogType.value}
-              label={AppTexts.reportPage.dogType.label}
-              onChange={inputs.dogType.onSelectChange}
-              error={!inputs.dogType.isValueValid}
-            />
-
+            <Box mt={3} mb={1}>
+              <SelectInputField
+                variant="outlined"
+                value={inputs.dogType.value}
+                label={AppTexts.reportPage.dogType.label}
+                onChange={inputs.dogType.onSelectChange}
+                error={!inputs.dogType.isValueValid}
+              />
+            </Box>
             <RTLTextField
               label={AppTexts.reportPage.dogDetails.dogRace}
               type="text"
