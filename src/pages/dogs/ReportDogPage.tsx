@@ -63,19 +63,19 @@ export const ReportDogPage = withAuthenticationRequired(() => {
 
   const inputs = {
     dogBreed: useTextInput({ isMandatoryInput: false }),
-    // dogSize: useTextInput({ isMandatoryInput: false }), TODO: still not supported in backend
-    // dogColor: useTextInput({ isMandatoryInput: false }), TODO: still not supported in backend
+    dogSize: useTextInput({ isMandatoryInput: false }),
+    dogColor: useTextInput({ isMandatoryInput: false }),
     dogType: useSelectInput({
       isMandatoryInput: true,
       possibleValues: Object.values(DogType),
     }),
-    // chipNumber: useTextInput({ isMandatoryInput: false }), TODO: not supported in backend
-    // location: useTextInput({ isMandatoryInput: false }), TODO: still not supported in backend
+    // chipNumber: useTextInput({ isMandatoryInput: false }), TODO: don't think we need that one. Don't we?
+    location: useTextInput({ isMandatoryInput: true }),
     contactName: useTextInput({ isMandatoryInput: true }),
     contactPhone: usePhoneNumberInput({ isMandatoryInput: true }),
     contactEmail: useEmailInput({ isMandatoryInput: false }),
     contactAddress: useTextInput({ isMandatoryInput: false }),
-    // extraDetails: useTextInput({ isMandatoryInput: false }), TODO: not supported in backend
+    extraDetails: useTextInput({ isMandatoryInput: false }),
   };
 
   const clearInputs = () => {
@@ -111,12 +111,16 @@ export const ReportDogPage = withAuthenticationRequired(() => {
 
     const imageBlob = await getImageBlob(selectedImageUrl);
     const payload: ReportDogPayload = {
-      breed: inputs.dogBreed.value,
       type: inputs.dogType.value as DogType,
       contactName: inputs.contactName.value,
       contactAdress: inputs.contactAddress.value,
       contactPhone: inputs.contactPhone.value,
       contactEmail: inputs.contactEmail.value,
+      foundAtLocation: inputs.location.value,
+      breed: inputs.dogBreed.value, 
+      color: inputs.dogColor.value, 
+      size: inputs.dogSize.value,
+      extraDetails: inputs.extraDetails.value,
       img: imageBlob,
     };
     setIsLoading(true);
@@ -177,7 +181,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               onChange={inputs.dogBreed.onTextChange}
               error={!inputs.dogBreed.isTextValid}
             />
-            {/* <RTLTextField
+            <RTLTextField
               label={AppTexts.reportPage.dogDetails.dogSize}
               type="text"
               fullWidth
@@ -185,8 +189,8 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               value={inputs.dogSize.value}
               onChange={inputs.dogSize.onTextChange}
               error={!inputs.dogSize.isTextValid}
-            /> */}
-            {/* <RTLTextField
+            />
+            <RTLTextField
               label={AppTexts.reportPage.dogDetails.dogColor}
               type="text"
               fullWidth
@@ -194,7 +198,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               value={inputs.dogColor.value}
               onChange={inputs.dogColor.onTextChange}
               error={!inputs.dogColor.isTextValid}
-            /> */}
+            />
             {/* <RTLTextField
               label={AppTexts.reportPage.dogDetails.chipNumber}
               type="number"
@@ -204,7 +208,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               onChange={inputs.chipNumber.onTextChange}
               error={!inputs.chipNumber.isTextValid}
             /> */}
-            {/* <RTLTextField
+            <RTLTextField
               label={AppTexts.reportPage.locationDetails.locationDescription}
               fullWidth
               type="text"
@@ -212,7 +216,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               value={inputs.location.value}
               onChange={inputs.location.onTextChange}
               error={!inputs.location.isTextValid}
-            /> */}
+            />
             <RTLTextField
               rows={2}
               label={AppTexts.reportPage.extraDetails.contactName}
@@ -257,7 +261,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               onChange={inputs.contactAddress.onTextChange}
               error={!inputs.contactAddress.isTextValid}
             />
-            {/* <RTLTextField
+            <RTLTextField
               rows={5}
               label={AppTexts.reportPage.extraDetails.extraDetails}
               fullWidth
@@ -267,8 +271,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               value={inputs.extraDetails.value}
               onChange={inputs.extraDetails.onTextChange}
               error={!inputs.extraDetails.isTextValid}
-            /> */}
-
+            />
             <Typography
               variant="subtitle1"
               color={theme.palette.error.main}
