@@ -1,3 +1,8 @@
+const homePageButtons = {
+  lostDog: "אני מחפש את הכלב שלי",
+  foundDog: "אני מצאתי כלב"
+};
+
 export const AppTexts = {
   authPage: {
     loginCta: "התחבר",
@@ -5,10 +10,14 @@ export const AppTexts = {
   },
   searchPage: {
     title: "חיפוש אחר כלב",
+    beforeReportingLost: "שנייה לפני שמדווחים, בואו נבדוק אם מישהו כבר דיווח על הכלב כנעדר",
     submit: "חיפוש",
   },
   reportPage: {
-    title: "דיווח על כלב",
+    title: {
+      lost: "דיווח על כלב נעדר", 
+      found: "דיווח על כלב שנמצא"
+    },
     photo: {
       cta: "העלו תמונה ברורה ככל האפשר של הכלב",
       ctaError: "חסרה תמונה של הכלב. העלו תמונה ברורה ככל האפשר",
@@ -39,11 +48,15 @@ export const AppTexts = {
     error: "אנא מלאו את כל השדות המסומנים באדום",
     request: {
       error: "שליחת הטופס נכשלה",
-      success: "הכלב נשמר בהצלחה במאגר!"
+      success: {
+        reportedFound: "הכלב דווח בהצלחה כנמצא",
+        reportedLost: "הכלב דווח בהצלחה כנעדר",
+      }
     },
   },
   homePage: {
     cta: {
+      ...homePageButtons,
       searchPage: "חיפוש אחר כלב",
       reportPage: "דיווח על כלב",
     },
@@ -53,13 +66,22 @@ export const AppTexts = {
     call: "טלפון",
     email: "מייל",
     error: "תקלה בטעינת התוצאות",
-    noResults: "לא נמצאו תוצאות",
+    noResults: {
+      title: "לא נמצאו תוצאות",
+      reportMissingDog: "דווח על הכלב כנעדר"
+    },
+    notFound: {
+      lostDogNotFound: "הכלב שלי לא נמצא כאן",
+      foundDogNotFound: "הכלב שמצאתי לא כאן"
+    },
     refresh: "רענן",
     loading: "...טוען תוצאות",
   },
   navigation: {
     home: "בית",
     report: "דיווח על כלב",
-    search: "חיפוש"
+    reportFound: "דיווח על כלב שנמצא",
+    searchLostDog: homePageButtons.lostDog,
+    searchFoundDog: homePageButtons.foundDog
   }
 };

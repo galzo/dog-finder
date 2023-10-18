@@ -85,11 +85,14 @@ export const PageToolbar = () => {
               <MenuItem onClick={() => navigate(AppRoutes.root)} sx={styles.menuItem}>
                 {AppTexts.navigation.home}
               </MenuItem>
-              <MenuItem onClick={() => navigate(AppRoutes.dogs.search)} sx={styles.menuItem}>
-                {AppTexts.navigation.search}
+              <MenuItem onClick={() => navigate(AppRoutes.dogs.searchLostDog)} sx={styles.menuItem}>
+                {AppTexts.navigation.searchLostDog}
               </MenuItem>
-              <MenuItem onClick={() => navigate(AppRoutes.dogs.report)} sx={styles.menuItem}>
-                {AppTexts.navigation.report}
+              <MenuItem onClick={() => navigate(AppRoutes.dogs.searchFoundDog)} sx={styles.menuItem}>
+                {AppTexts.navigation.searchFoundDog}
+              </MenuItem>
+              <MenuItem onClick={() => navigate(AppRoutes.dogs.reportFound)} sx={styles.menuItem}>
+                {AppTexts.navigation.reportFound}
               </MenuItem>
           </Menu>
     </Box>

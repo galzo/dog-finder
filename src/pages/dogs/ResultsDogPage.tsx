@@ -7,7 +7,7 @@ import { ResultsGrid } from "../../components/resultsComponents/ResultsGrid";
 import { ErrorLoadingDogs } from "../../components/resultsComponents/ErrorLoadingDogs";
 import { LoadingDogs } from "../../components/resultsComponents/LoadingDogs";
 import { NoDogs } from "../../components/resultsComponents/NoDogs";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGetServerApi } from "../../facades/ServerApi";
 import { DogType } from "../../facades/payload.types";
 
@@ -28,6 +28,7 @@ const fetcher = async (
 export const ResultsDogPage = () => {
   const { state: payload } = useLocation();
   const getServerApi = useGetServerApi();
+  const { dogType } = useParams();
 
   const {
     data: results,
@@ -53,7 +54,7 @@ export const ResultsDogPage = () => {
         {isLoading && <LoadingDogs />}
         {!isLoading && isEmpty && !error && <NoDogs />}
         {!isLoading && error && <ErrorLoadingDogs refresh={mutate} />}
-        {!isLoading && !error && !isEmpty && <ResultsGrid results={results} />}
+        {!isLoading && !error && !isEmpty && <ResultsGrid results={results} dogType={dogType as DogType} />}
       </Box>
     </PageContainer>
   );
