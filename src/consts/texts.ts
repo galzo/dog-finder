@@ -57,4 +57,9 @@ export const AppTexts = {
     refresh: "רענן",
     loading: "...טוען תוצאות",
   },
+  navigation: {
+    home: "בית",
+    report: "דיווח על כלב",
+    search: "חיפוש"
+  }
 };
