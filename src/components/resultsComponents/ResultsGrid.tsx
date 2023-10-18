@@ -4,7 +4,10 @@ import { DogCard } from "./DogCard";
 export type Dog = {
   dogId: string;
   contactPhone: string;
+  contactName: string;
+  contactEmail: string;
   image: string;
+  imageContentType: string;
 };
 
 export const ResultsGrid = ({ results }: { results: Dog[] | undefined }) => {

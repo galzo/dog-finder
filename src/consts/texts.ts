@@ -50,7 +50,8 @@ export const AppTexts = {
   },
   resultsPage: {
     title: "תוצאות חיפוש",
-    call: "לחץ להתקשרות",
+    call: "טלפון",
+    email: "מייל",
     error: "תקלה בטעינת התוצאות",
     noResults: "לא נמצאו תוצאות",
     refresh: "רענן",
