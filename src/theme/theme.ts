@@ -21,7 +21,7 @@ const palette = {
     text: createTextColor(AppColors.text),
     action: {
       disabledBackground: '#878f99',
-      disabled: 'white'
+      disabled: 'white',
     }
 }
 
