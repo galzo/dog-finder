@@ -3,6 +3,7 @@ import { AppTexts } from "../../consts/texts";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { useNavigate } from "react-router-dom";
+import { DogType } from "../../facades/payload.types";
 
 const useNoResultsStyles = createStyleHook((theme) => { 
   return {
@@ -19,10 +20,35 @@ const useNoResultsStyles = createStyleHook((theme) => {
   };
 });
 
-export const NoDogs = () => {
+interface NoDogsProps {
+  dogType: DogType
+};
+
+
+export const NoDogs = (props: NoDogsProps) => {
   const theme = useTheme();
   const styles = useNoResultsStyles();
   const navigate = useNavigate();
+  const { dogType } = props;
+
+
+  const getButtonText = () => {
+    if (dogType === DogType.FOUND) {
+      return AppTexts.resultsPage.noResults.reportDogFound;
+    }
+
+    return AppTexts.resultsPage.noResults.reportMissingDog;
+  };
+
+  // TODO: this code is duplicated. Clean this up
+  const getButtonNavigationRoute = () => {
+    if (dogType === DogType.FOUND) {
+      return AppRoutes.dogs.reportFound;
+    }
+
+    return AppRoutes.dogs.reportLost;
+  };
+
 
   return (
     <Box sx={styles.content}>
@@ -31,8 +57,8 @@ export const NoDogs = () => {
           {AppTexts.resultsPage.noResults.title}
         </Typography>
       </Box>
-      <Button size="large" variant="contained" sx={styles.button} onClick={() => navigate(AppRoutes.dogs.reportLost)}>
-          {AppTexts.resultsPage.noResults.reportMissingDog}
+      <Button size="large" variant="contained" sx={styles.button} onClick={() => navigate(getButtonNavigationRoute())}>
+          {getButtonText()}
       </Button> 
     </Box>
   );
