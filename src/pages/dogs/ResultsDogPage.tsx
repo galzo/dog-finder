@@ -52,7 +52,7 @@ export const ResultsDogPage = () => {
       >
         <PageTitle text={AppTexts.resultsPage.title} />
         {isLoading && <LoadingDogs />}
-        {!isLoading && isEmpty && !error && <NoDogs />}
+        {!isLoading && isEmpty && !error && <NoDogs dogType={dogType as DogType}/>}
         {!isLoading && error && <ErrorLoadingDogs refresh={mutate} />}
         {!isLoading && !error && !isEmpty && <ResultsGrid results={results} dogType={dogType as DogType} />}
       </Box>

@@ -68,7 +68,8 @@ export const AppTexts = {
     error: "תקלה בטעינת התוצאות",
     noResults: {
       title: "לא נמצאו תוצאות",
-      reportMissingDog: "דווח על הכלב כנעדר"
+      reportMissingDog: "דווח על הכלב כנעדר",
+      reportDogFound: "דווח על כלב כנמצא"
     },
     notFound: {
       lostDogNotFound: "הכלב שלי לא נמצא כאן",
