@@ -8,6 +8,9 @@ const RTLWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return <div dir="rtl">{children}</div>;
 };
 
+// note: don't use any any paddings/margins in this component,
+// better add a wrapper like <Box mt={3} mb={1}><SelectInputField/></Box> instead.
+
 const useSelectInputStyles = createStyleHook((theme) => {
   return {
     root: {

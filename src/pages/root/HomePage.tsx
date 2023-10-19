@@ -32,7 +32,7 @@ const useHomePageStyles = createStyleHook((theme) => {
       marginLeft: "24px",
     },
     button: {
-      width: "200px",
+      width: "240px",
     },
   };
 });
@@ -65,13 +65,13 @@ export const HomePage = () => {
           }}
         />
         <Box sx={styles.content}>
-          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.report)}>
-            <IconPaw {...commonIconProps} />
-            {AppTexts.homePage.cta.reportPage}
-          </Button>
-          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.search)}>
+          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.searchLostDog)}>
             <IconSearch {...commonIconProps} />
-            {AppTexts.homePage.cta.searchPage}
+            {AppTexts.homePage.cta.lostDog}
+          </Button>
+          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.searchFoundDog)}>
+            <IconPaw {...commonIconProps} />
+            {AppTexts.homePage.cta.foundDog}
           </Button>
         </Box>
       </Box>
