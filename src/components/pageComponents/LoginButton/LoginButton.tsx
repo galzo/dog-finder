@@ -3,11 +3,11 @@ import { Button } from "@mui/material";
 import { AppTexts } from "../../../consts/texts";
 
 export const LoginButton = () => {
-    const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
-    return (
-        <Button onClick={() => loginWithRedirect()}>
-            {AppTexts.authPage.loginCta}
-        </Button>
-    );
+  return (
+    <Button onClick={() => loginWithRedirect()}>
+      {AppTexts.authPage.loginCta}
+    </Button>
+  );
 };

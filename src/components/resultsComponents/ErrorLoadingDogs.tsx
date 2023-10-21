@@ -5,26 +5,22 @@ import { AppTexts } from "../../consts/texts";
 import { Dog } from "./ResultsGrid";
 
 export const ErrorLoadingDogs = ({
-    refresh,
+  refresh,
 }: {
-    refresh: KeyedMutator<Dog[]>;
+  refresh: KeyedMutator<Dog[]>;
 }) => {
-    return (
-        <Alert
-            dir="rtl"
-            variant="filled"
-            severity="error"
-            action={
-                <Button
-                    color="inherit"
-                    size="small"
-                    onClick={() => refresh(undefined)}
-                >
-                    {AppTexts.resultsPage.refresh}
-                </Button>
-            }
-        >
-            <Typography px={6}>{AppTexts.resultsPage.error}</Typography>
-        </Alert>
-    );
+  return (
+    <Alert
+      dir="rtl"
+      variant="filled"
+      severity="error"
+      action={
+        <Button color="inherit" size="small" onClick={() => refresh(undefined)}>
+          {AppTexts.resultsPage.refresh}
+        </Button>
+      }
+    >
+      <Typography px={6}>{AppTexts.resultsPage.error}</Typography>
+    </Alert>
+  );
 };

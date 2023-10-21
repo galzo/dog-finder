@@ -7,70 +7,70 @@ import { AppRoutes } from "../../consts/routes";
 import { createStyleHook } from "../../hooks/styleHooks";
 
 export type Dog = {
-    dogId: string;
-    contactPhone: string;
-    contactName: string;
-    contactEmail: string;
-    image: string;
-    imageContentType: string;
+  dogId: string;
+  contactPhone: string;
+  contactName: string;
+  contactEmail: string;
+  image: string;
+  imageContentType: string;
 };
 
 const useResultsStyles = createStyleHook(() => {
-    return {
-        buttonContainer: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        },
-    };
+  return {
+    buttonContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  };
 });
 
 export const ResultsGrid = ({
-    results,
-    dogType,
+  results,
+  dogType,
 }: {
-    results: Dog[] | undefined;
-    dogType: DogType;
+  results: Dog[] | undefined;
+  dogType: DogType;
 }) => {
-    const navigate = useNavigate();
-    const styles = useResultsStyles();
+  const navigate = useNavigate();
+  const styles = useResultsStyles();
 
-    const getButtonText = () => {
-        if (dogType === DogType.FOUND) {
-            return AppTexts.resultsPage.notFound.foundDogNotFound;
-        }
+  const getButtonText = () => {
+    if (dogType === DogType.FOUND) {
+      return AppTexts.resultsPage.notFound.foundDogNotFound;
+    }
 
-        return AppTexts.resultsPage.notFound.lostDogNotFound;
-    };
+    return AppTexts.resultsPage.notFound.lostDogNotFound;
+  };
 
-    const getButtonNavigationRoute = () => {
-        if (dogType === DogType.FOUND) {
-            return AppRoutes.dogs.reportFound;
-        }
+  const getButtonNavigationRoute = () => {
+    if (dogType === DogType.FOUND) {
+      return AppRoutes.dogs.reportFound;
+    }
 
-        return AppRoutes.dogs.reportLost;
-    };
+    return AppRoutes.dogs.reportLost;
+  };
 
-    return (
-        <>
-            <Grid container spacing={2}>
-                {results?.map((dog) => {
-                    return (
-                        <Grid item xs={12} md={6} lg={4} key={dog.dogId}>
-                            <DogCard dog={dog} />
-                        </Grid>
-                    );
-                })}
+  return (
+    <>
+      <Grid container spacing={2}>
+        {results?.map((dog) => {
+          return (
+            <Grid item xs={12} md={6} lg={4} key={dog.dogId}>
+              <DogCard dog={dog} />
             </Grid>
-            <Box sx={styles.buttonContainer}>
-                <Button
-                    size="large"
-                    variant="contained"
-                    onClick={() => navigate(getButtonNavigationRoute())}
-                >
-                    {getButtonText()}
-                </Button>
-            </Box>
-        </>
-    );
+          );
+        })}
+      </Grid>
+      <Box sx={styles.buttonContainer}>
+        <Button
+          size="large"
+          variant="contained"
+          onClick={() => navigate(getButtonNavigationRoute())}
+        >
+          {getButtonText()}
+        </Button>
+      </Box>
+    </>
+  );
 };

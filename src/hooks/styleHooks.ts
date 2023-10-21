@@ -16,8 +16,8 @@ import { useMemo } from "react";
  * }
  */
 export type StyleGenerator<TStyleKey, TProps> = (
-    theme: Theme,
-    props: TProps,
+  theme: Theme,
+  props: TProps,
 ) => Record<keyof TStyleKey, SxProps<Theme>>;
 
 /**
@@ -48,16 +48,16 @@ export type StyleGenerator<TStyleKey, TProps> = (
  * return <div sx={componentStyle.root}> ... </div>
  */
 export function useStyleHook<TStyleKey, TProps = Record<never, never>>(
-    styleGenerator: StyleGenerator<TStyleKey, TProps>,
-    props: TProps = {} as TProps,
+  styleGenerator: StyleGenerator<TStyleKey, TProps>,
+  props: TProps = {} as TProps,
 ) {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const renderedStyle = useMemo(() => {
-        return styleGenerator(theme, props);
-    }, [props, styleGenerator, theme]);
+  const renderedStyle = useMemo(() => {
+    return styleGenerator(theme, props);
+  }, [props, styleGenerator, theme]);
 
-    return renderedStyle;
+  return renderedStyle;
 }
 
 /**
@@ -92,17 +92,17 @@ export function useStyleHook<TStyleKey, TProps = Record<never, never>>(
  * return <div sx={componentStyle.root}> ... </div>
  */
 export function createStyleHook<TStyleKey>(
-    styleGenerator: StyleGenerator<TStyleKey, undefined>,
+  styleGenerator: StyleGenerator<TStyleKey, undefined>,
 ): () => Record<keyof TStyleKey, SxProps<Theme>>;
 
 export function createStyleHook<TStyleKey, TProps>(
-    styleGenerator: StyleGenerator<TStyleKey, TProps>,
+  styleGenerator: StyleGenerator<TStyleKey, TProps>,
 ): (props: TProps) => Record<keyof TStyleKey, SxProps<Theme>>;
 
 export function createStyleHook<TStyleKey, TProps = Record<never, never>>(
-    styleGenerator: StyleGenerator<TStyleKey, TProps>,
+  styleGenerator: StyleGenerator<TStyleKey, TProps>,
 ) {
-    return (props: TProps = {} as TProps) => {
-        return useStyleHook(styleGenerator, props);
-    };
+  return (props: TProps = {} as TProps) => {
+    return useStyleHook(styleGenerator, props);
+  };
 }

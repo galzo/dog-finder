@@ -4,19 +4,19 @@ import { Button } from "@mui/material";
 import { AppTexts } from "../../../consts/texts";
 
 export const LogoutButton = () => {
-    const { logout } = useAuth0();
+  const { logout } = useAuth0();
 
-    return (
-        <Button
-            onClick={() =>
-                logout({
-                    logoutParams: {
-                        returnTo: `${window.location.origin}/dog-finder`,
-                    },
-                })
-            }
-        >
-            {AppTexts.authPage.logoutCta}
-        </Button>
-    );
+  return (
+    <Button
+      onClick={() =>
+        logout({
+          logoutParams: {
+            returnTo: `${window.location.origin}/dog-finder`,
+          },
+        })
+      }
+    >
+      {AppTexts.authPage.logoutCta}
+    </Button>
+  );
 };
