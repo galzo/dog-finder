@@ -1,8 +1,7 @@
 export enum DogType {
-    LOST = "lost", 
-    FOUND = "found"
+    LOST = "lost",
+    FOUND = "found",
 }
-
 
 export interface QueryPayload {
     type: DogType;
@@ -16,5 +15,5 @@ export interface ReportDogPayload {
     contactPhone: string;
     breed?: string;
     contactEmail?: string;
-    contactAdress?: string
+    contactAdress?: string;
 }

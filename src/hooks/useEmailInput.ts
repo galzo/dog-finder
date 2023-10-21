@@ -1,40 +1,42 @@
 import { useCallback, useState } from "react";
-import validator from 'validator';
+import validator from "validator";
 
 // TODO: make this DRYER. @galzo don't kill me. we're at war
 export const useEmailInput = (props: { isMandatoryInput: boolean }) => {
-  const [emailInput, setEmailInput] = useState("");
-  const [isInputValid, setIsInputValid] = useState(true);
-  
-  const clearInput = useCallback(() => {
-    setEmailInput("");
-  }, [])
+    const [emailInput, setEmailInput] = useState("");
+    const [isInputValid, setIsInputValid] = useState(true);
 
-  const handleEmailChange = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (event: any) => {
-      // Clear any previous errors
-      setIsInputValid(true);
+    const clearInput = useCallback(() => {
+        setEmailInput("");
+    }, []);
 
-      // Update email
-      const newEmail = event.target.value as string;
-      setEmailInput(newEmail);
-    },
-    []
-  );
+    const handleEmailChange = useCallback(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (event: any) => {
+            // Clear any previous errors
+            setIsInputValid(true);
 
-  const validateInput = useCallback(() => {
-    const isValid = (!props.isMandatoryInput && !emailInput) || (Boolean(emailInput) && validator.isEmail(emailInput));
-    setIsInputValid(isValid);
+            // Update email
+            const newEmail = event.target.value as string;
+            setEmailInput(newEmail);
+        },
+        [],
+    );
 
-    return isValid;
-  }, [props.isMandatoryInput, emailInput]);
+    const validateInput = useCallback(() => {
+        const isValid =
+            (!props.isMandatoryInput && !emailInput) ||
+            (Boolean(emailInput) && validator.isEmail(emailInput));
+        setIsInputValid(isValid);
 
-  return {
-    value: emailInput,
-    onEmailChange: handleEmailChange,
-    isEmailValid: isInputValid,
-    validateInput: validateInput,
-    clearInput: clearInput
-  };
+        return isValid;
+    }, [props.isMandatoryInput, emailInput]);
+
+    return {
+        value: emailInput,
+        onEmailChange: handleEmailChange,
+        isEmailValid: isInputValid,
+        validateInput,
+        clearInput,
+    };
 };
