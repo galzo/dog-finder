@@ -1,14 +1,9 @@
-import React from "react";
 import { Alert, Button, Typography } from "@mui/material";
 import { KeyedMutator } from "swr";
 import { AppTexts } from "../../consts/texts";
 import { Dog } from "./ResultsGrid";
 
-export const ErrorLoadingDogs = ({
-  refresh,
-}: {
-  refresh: KeyedMutator<Dog[]>;
-}) => {
+const ErrorLoadingDogs = ({ refresh }: { refresh: KeyedMutator<Dog[]> }) => {
   return (
     <Alert
       dir="rtl"
@@ -24,3 +19,5 @@ export const ErrorLoadingDogs = ({
     </Alert>
   );
 };
+
+export default ErrorLoadingDogs;

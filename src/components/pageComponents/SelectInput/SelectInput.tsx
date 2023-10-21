@@ -58,7 +58,7 @@ const useSelectInputStyles = createStyleHook((theme) => {
   };
 });
 
-export const SelectInputField: FC<SelectProps> = (props) => {
+const SelectInputField: FC<SelectProps> = (props) => {
   const styles = useSelectInputStyles();
   return (
     <RTLWrapper>
@@ -76,3 +76,5 @@ export const SelectInputField: FC<SelectProps> = (props) => {
     </RTLWrapper>
   );
 };
+
+export default SelectInputField;

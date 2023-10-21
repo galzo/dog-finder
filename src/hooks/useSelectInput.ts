@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 // TODO: make this DRYER. @galzo don't kill me. we're at war
-export const useSelectInput = (props: {
+const useSelectInput = (props: {
   isMandatoryInput: boolean;
   possibleValues: Array<any>;
 }) => {
@@ -42,3 +42,5 @@ export const useSelectInput = (props: {
     clearInput,
   };
 };
+
+export default useSelectInput;

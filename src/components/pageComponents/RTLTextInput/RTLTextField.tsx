@@ -1,5 +1,5 @@
 import { TextField, TextFieldProps, alpha } from "@mui/material";
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 
 const RTLWrapper: FC<{ children: ReactNode }> = ({ children }) => {
@@ -39,7 +39,7 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
   };
 });
 
-export const RTLTextField: FC<TextFieldProps> = (props) => {
+const RTLTextField: FC<TextFieldProps> = (props) => {
   const styles = useRTLTextFieldStyles();
   return (
     <RTLWrapper>
@@ -47,3 +47,5 @@ export const RTLTextField: FC<TextFieldProps> = (props) => {
     </RTLWrapper>
   );
 };
+
+export default RTLTextField;

@@ -1,6 +1,6 @@
 import { SvgIconProps, SvgIcon } from "@mui/material";
 
-export const CameraIcon = (props: SvgIconProps) => {
+const CameraIcon = (props: SvgIconProps) => {
   return (
     <SvgIcon
       {...props}
@@ -29,3 +29,5 @@ export const CameraIcon = (props: SvgIconProps) => {
     </SvgIcon>
   );
 };
+
+export default CameraIcon;

@@ -1,5 +1,5 @@
-import { alpha, createTheme } from "@mui/material";
-import { AppColors } from "../consts/colors";
+import { createTheme } from "@mui/material";
+import AppColors from "../consts/colors";
 
 const {
   palette: { augmentColor },
@@ -29,7 +29,9 @@ const palette = {
   },
 };
 
-export const theme = createTheme({
+const theme = createTheme({
   direction: "rtl",
   palette,
 });
+
+export default theme;

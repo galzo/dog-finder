@@ -1,4 +1,4 @@
-export const AppRoutes = {
+const AppRoutes = {
   root: "/dog-finder",
   dogs: {
     report: "/dog-finder/dogs/report",
@@ -9,3 +9,5 @@ export const AppRoutes = {
     results: "/dog-finder/dogs/results/:dogType",
   },
 };
+
+export default AppRoutes;

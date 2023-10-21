@@ -39,7 +39,7 @@ const usePageToolbarStyles = createStyleHook((theme) => {
   };
 });
 
-export const PageToolbar = () => {
+const PageToolbar = () => {
   const styles = usePageToolbarStyles();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -97,3 +97,5 @@ export const PageToolbar = () => {
     </Box>
   );
 };
+
+export default PageToolbar;

@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import { PageDivider } from "../PageDivider/PageDivider";
+import PageDivider from "../PageDivider/PageDivider";
 
 interface PageSectionProps {
   title: string;
@@ -25,11 +25,7 @@ const usePageSectionStyles = createStyleHook((theme) => {
   };
 });
 
-export const PageSection: FC<PageSectionProps> = ({
-  title,
-  children,
-  hasDivider,
-}) => {
+const PageSection: FC<PageSectionProps> = ({ title, children, hasDivider }) => {
   const styles = usePageSectionStyles();
   return (
     <Box sx={styles.section}>
@@ -41,3 +37,5 @@ export const PageSection: FC<PageSectionProps> = ({
     </Box>
   );
 };
+
+export default PageSection;

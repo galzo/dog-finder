@@ -2,14 +2,14 @@ import { Box, Button, ButtonOwnProps } from "@mui/material";
 import { IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
+import PageContainer from "../../components/pageComponents/PageContainer/PageContainer";
 import { createStyleHook } from "../../hooks/styleHooks";
-import { AppTexts } from "../../consts/texts";
-import { AppRoutes } from "../../consts/routes";
+import AppTexts from "../../consts/texts";
+import AppRoutes from "../../consts/routes";
 import dogAnim from "../../assets/animations/dogAnim.json";
-import { useWindowSize } from "../../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
 
-const useHomePageStyles = createStyleHook((theme) => {
+const useHomePageStyles = createStyleHook(() => {
   return {
     root: {
       display: "flex",
@@ -37,7 +37,7 @@ const useHomePageStyles = createStyleHook((theme) => {
   };
 });
 
-export const HomePage = () => {
+const HomePage = () => {
   const styles = useHomePageStyles();
   const windowSize = useWindowSize();
   const navigate = useNavigate();
@@ -84,3 +84,5 @@ export const HomePage = () => {
     </PageContainer>
   );
 };
+
+export default HomePage;

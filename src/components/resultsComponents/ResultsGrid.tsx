@@ -1,9 +1,9 @@
 import { Box, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { DogCard } from "./DogCard";
+import DogCard from "./DogCard";
 import { DogType } from "../../facades/payload.types";
-import { AppTexts } from "../../consts/texts";
-import { AppRoutes } from "../../consts/routes";
+import AppTexts from "../../consts/texts";
+import AppRoutes from "../../consts/routes";
 import { createStyleHook } from "../../hooks/styleHooks";
 
 export type Dog = {
@@ -25,7 +25,7 @@ const useResultsStyles = createStyleHook(() => {
   };
 });
 
-export const ResultsGrid = ({
+const ResultsGrid = ({
   results,
   dogType,
 }: {
@@ -74,3 +74,5 @@ export const ResultsGrid = ({
     </>
   );
 };
+
+export default ResultsGrid;

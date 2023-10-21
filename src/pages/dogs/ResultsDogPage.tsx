@@ -1,13 +1,13 @@
 import useSWR from "swr";
 import { Box } from "@mui/material";
 import { useLocation, useParams } from "react-router-dom";
-import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
-import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
-import { AppTexts } from "../../consts/texts";
-import { ResultsGrid } from "../../components/resultsComponents/ResultsGrid";
-import { ErrorLoadingDogs } from "../../components/resultsComponents/ErrorLoadingDogs";
-import { LoadingDogs } from "../../components/resultsComponents/LoadingDogs";
-import { NoDogs } from "../../components/resultsComponents/NoDogs";
+import PageContainer from "../../components/pageComponents/PageContainer/PageContainer";
+import PageTitle from "../../components/pageComponents/PageTitle/PageTitle";
+import AppTexts from "../../consts/texts";
+import ResultsGrid from "../../components/resultsComponents/ResultsGrid";
+import ErrorLoadingDogs from "../../components/resultsComponents/ErrorLoadingDogs";
+import LoadingDogs from "../../components/resultsComponents/LoadingDogs";
+import NoDogs from "../../components/resultsComponents/NoDogs";
 import { useGetServerApi } from "../../facades/ServerApi";
 import { DogType } from "../../facades/payload.types";
 
@@ -24,7 +24,7 @@ const fetcher = async (
   throw new Error("Failed to fetch results");
 };
 
-export const ResultsDogPage = () => {
+const ResultsDogPage = () => {
   const { state: payload } = useLocation();
   const getServerApi = useGetServerApi();
   const { dogType } = useParams();
@@ -62,3 +62,5 @@ export const ResultsDogPage = () => {
     </PageContainer>
   );
 };
+
+export default ResultsDogPage;

@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import validator from "validator";
 
 // TODO: make this DRYER. @galzo don't kill me. we're at war
-export const usePhoneNumberInput = (props: { isMandatoryInput: boolean }) => {
+const usePhoneNumberInput = (props: { isMandatoryInput: boolean }) => {
   const [phoneInput, setPhoneInput] = useState("");
   const [isInputValid, setIsInputValid] = useState(true);
 
@@ -40,3 +40,5 @@ export const usePhoneNumberInput = (props: { isMandatoryInput: boolean }) => {
     clearInput,
   };
 };
+
+export default usePhoneNumberInput;

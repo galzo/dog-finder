@@ -1,11 +1,11 @@
 import { Card, CardActions, CardMedia, Link } from "@mui/material";
 import { IconPhone, IconMail, IconUser } from "@tabler/icons-react";
-import { AppTexts } from "../../consts/texts";
+import AppTexts from "../../consts/texts";
 import { Dog } from "./ResultsGrid";
 
 const linkStyle = { display: "flex", alignItems: "center", gap: "8px" };
 
-export const DogCard = ({ dog }: { dog: Dog }) => {
+const DogCard = ({ dog }: { dog: Dog }) => {
   const image = `data:${dog.imageContentType};base64,${dog.image}`;
   return (
     <Card dir="rtl">
@@ -55,3 +55,5 @@ export const DogCard = ({ dog }: { dog: Dog }) => {
     </Card>
   );
 };
+
+export default DogCard;
