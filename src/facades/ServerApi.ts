@@ -4,7 +4,7 @@ import { DogType, QueryPayload, ReportDogPayload } from "./payload.types";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
-const build_endpoint = (path: string) => {
+const buildEndpoint = (path: string) => {
   return `${API_URL}${path}`;
 };
 
@@ -50,9 +50,11 @@ class ServerApi {
     const formData = new FormData();
     const { token } = this;
 
-    for (const value in data) {
-      formData.append(value, data[value]);
-    }
+    Object.keys(data).forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(data, key)) {
+        formData.append(key, data[key]);
+      }
+    });
 
     const response = await fetch(url, {
       method,
@@ -68,7 +70,7 @@ class ServerApi {
 
   // enter endpoint
   async query(payload: QueryPayload) {
-    const url = build_endpoint("/dogfinder/query/");
+    const url = buildEndpoint("/dogfinder/query/");
     return this.sendData(url, payload, "POST");
   }
 
@@ -77,16 +79,16 @@ class ServerApi {
     const newPayload = {
       img: payload.img,
     };
-    let url = build_endpoint("/dogfinder/search_found_dogs/");
+    let url = buildEndpoint("/dogfinder/search_found_dogs/");
     if (dogType === DogType.FOUND) {
-      url = build_endpoint("/dogfinder/search_lost_dogs/");
+      url = buildEndpoint("/dogfinder/search_lost_dogs/");
     }
 
     return this.sendData(url, newPayload, "POST");
   }
 
   async report_dog(payload: ReportDogPayload) {
-    const url = build_endpoint("/dogfinder/add_document");
+    const url = buildEndpoint("/dogfinder/add_document");
 
     return this.sendData(url, payload, "POST");
   }

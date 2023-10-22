@@ -7,7 +7,7 @@ interface IPageContainerProps {
   children: ReactNode;
 }
 
-const usePageContainerStyles = createStyleHook((theme) => {
+const usePageContainerStyles = createStyleHook(() => {
   return {
     root: {
       width: "100%",

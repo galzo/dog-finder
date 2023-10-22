@@ -8,7 +8,6 @@ import AppShadows from "../../../consts/shadows";
 
 interface UploadPhotoProps {
   onSelectImage: (file: File) => Promise<void>;
-  selectedImageUrl?: string;
   isError: boolean;
 }
 
@@ -40,11 +39,7 @@ const useUploadPhotoStyles = createStyleHook(
   },
 );
 
-const UploadPhoto: FC<UploadPhotoProps> = ({
-  onSelectImage,
-  selectedImageUrl,
-  isError,
-}) => {
+const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, isError }) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const styles = useUploadPhotoStyles({ isError });
   const theme = useTheme();

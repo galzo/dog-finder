@@ -4,7 +4,7 @@ import { IconTrash } from "@tabler/icons-react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 import UploadPhoto from "./UploadPhoto";
 import PageImage from "../../pageComponents/PageImage/PageImage";
-import { AppShadows } from "../../../consts/shadows";
+import AppShadows from "../../../consts/shadows";
 
 const useDogPhotoStyles = createStyleHook(() => {
   return {
@@ -54,13 +54,7 @@ const DogPhoto: FC<DogPhotoProps> = ({
   const styles = useDogPhotoStyles();
 
   if (!selectedImageUrl) {
-    return (
-      <UploadPhoto
-        onSelectImage={onSelectImage}
-        selectedImageUrl={selectedImageUrl}
-        isError={isError}
-      />
-    );
+    return <UploadPhoto onSelectImage={onSelectImage} isError={isError} />;
   }
 
   return (

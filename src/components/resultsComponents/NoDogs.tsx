@@ -5,7 +5,7 @@ import AppTexts from "../../consts/texts";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { DogType } from "../../facades/payload.types";
 
-const useNoResultsStyles = createStyleHook((theme) => {
+const useNoResultsStyles = createStyleHook(() => {
   return {
     button: {
       width: "200px",

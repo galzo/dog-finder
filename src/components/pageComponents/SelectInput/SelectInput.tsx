@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import { AppTexts } from "../../../consts/texts";
+import AppTexts from "../../../consts/texts";
 import { DogType } from "../../../facades/payload.types";
 
 const RTLWrapper: FC<{ children: ReactNode }> = ({ children }) => {

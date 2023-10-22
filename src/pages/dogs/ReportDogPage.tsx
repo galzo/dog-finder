@@ -57,7 +57,7 @@ const ReportDogPage = withAuthenticationRequired(
     const [isMissingImage, setIsMissingImage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+    // const [isError, setIsError] = useState(false);
     const [requestStatus, setRequestStatus] = useState<string>("");
     const { dogType } = props;
 
@@ -93,8 +93,8 @@ const ReportDogPage = withAuthenticationRequired(
       // get server api
       const serverApi = await getServerApi();
       // Validate image upload
-      const isMissingImage = !selectedImageUrl;
-      setIsMissingImage(isMissingImage);
+      const noSelectedImageUrl = !selectedImageUrl;
+      setIsMissingImage(noSelectedImageUrl);
 
       // Validate all mandatory fields were filled
       const inputValidation = Object.values(inputs).map((input) =>
@@ -102,7 +102,7 @@ const ReportDogPage = withAuthenticationRequired(
       );
       const hasInvalidInputs = inputValidation.some((res) => !res);
 
-      const showError = hasInvalidInputs || isMissingImage;
+      const showError = hasInvalidInputs || noSelectedImageUrl;
       setShowErrorMessage(showError);
 
       if (showError) {

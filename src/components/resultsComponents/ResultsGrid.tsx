@@ -2,18 +2,10 @@ import { Box, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DogCard from "./DogCard";
 import { DogType } from "../../facades/payload.types";
+import Dog from "../../types/Dog";
 import AppTexts from "../../consts/texts";
 import AppRoutes from "../../consts/routes";
 import { createStyleHook } from "../../hooks/styleHooks";
-
-export type Dog = {
-  dogId: string;
-  contactPhone: string;
-  contactName: string;
-  contactEmail: string;
-  image: string;
-  imageContentType: string;
-};
 
 const useResultsStyles = createStyleHook(() => {
   return {

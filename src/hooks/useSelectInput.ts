@@ -5,6 +5,7 @@ const useSelectInput = (props: {
   isMandatoryInput: boolean;
   possibleValues: Array<any>;
 }) => {
+  const { isMandatoryInput, possibleValues } = props;
   const [valueInput, setValueInput] = useState("");
   const [isInputValid, setIsInputValid] = useState(true);
 
@@ -27,12 +28,12 @@ const useSelectInput = (props: {
 
   const validateInput = useCallback(() => {
     const isValid =
-      (!props.isMandatoryInput && !valueInput) ||
-      (Boolean(valueInput) && props.possibleValues.includes(valueInput));
+      (!isMandatoryInput && !valueInput) ||
+      (Boolean(valueInput) && possibleValues.includes(valueInput));
     setIsInputValid(isValid);
 
     return isValid;
-  }, [props.isMandatoryInput, valueInput]);
+  }, [isMandatoryInput, valueInput, possibleValues]);
 
   return {
     value: valueInput,
