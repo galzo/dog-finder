@@ -19,7 +19,7 @@ export const usePhoneNumberInput = (props: { isMandatoryInput: boolean }) => {
 
       // Update phone number
       const newPhone = event.target.value as string;
-      setPhoneInput(newPhone);
+      setPhoneInput(newPhone.trim());
     },
     []
   );
