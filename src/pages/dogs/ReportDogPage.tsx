@@ -11,19 +11,19 @@ import {
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { IconSend } from "@tabler/icons-react";
 import { useState } from "react";
-import PageContainer from "../../components/pageComponents/PageContainer/PageContainer";
-import AppTexts from "../../consts/texts";
-import PageTitle from "../../components/pageComponents/PageTitle/PageTitle";
-import useImageSelection from "../../hooks/useImageSelection";
-import DogPhoto from "../../components/reportComponents/DogPhoto/DogPhoto";
-import RTLTextField from "../../components/pageComponents/RTLTextInput/RTLTextField";
-import useTextInput from "../../hooks/useTextInput";
+import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
+import { AppTexts } from "../../consts/texts";
+import { PageTitle } from "../../components/pageComponents/PageTitle/PageTitle";
+import { useImageSelection } from "../../hooks/useImageSelection";
+import { DogPhoto } from "../../components/reportComponents/DogPhoto/DogPhoto";
+import { RTLTextField } from "../../components/pageComponents/RTLTextInput/RTLTextField";
+import { useTextInput } from "../../hooks/useTextInput";
 import { createStyleHook } from "../../hooks/styleHooks";
-import usePhoneNumberInput from "../../hooks/usePhoneNumberInput";
-import useEmailInput from "../../hooks/useEmailInput";
+import { usePhoneNumberInput } from "../../hooks/usePhoneNumberInput";
+import { useEmailInput } from "../../hooks/useEmailInput";
 import { DogType, ReportDogPayload } from "../../facades/payload.types";
 import { useGetServerApi } from "../../facades/ServerApi";
-import getImageBlob from "../../utils/imageUtils";
+import { getImageBlob } from "../../utils/imageUtils";
 
 const useReportDogPageStyles = createStyleHook(
   (theme, props: { isError: boolean }) => {
@@ -50,7 +50,7 @@ interface ReportDogPageProps {
   dogType: DogType;
 }
 
-const ReportDogPage = withAuthenticationRequired(
+export const ReportDogPage = withAuthenticationRequired(
   (props: ReportDogPageProps) => {
     const { onSelectImage, selectedImageUrl, clearSelection } =
       useImageSelection();
@@ -298,5 +298,3 @@ const ReportDogPage = withAuthenticationRequired(
     );
   },
 );
-
-export default ReportDogPage;

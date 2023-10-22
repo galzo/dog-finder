@@ -1,4 +1,4 @@
-type Dog = {
+export type Dog = {
   dogId: string;
   contactPhone: string;
   contactName: string;
@@ -6,5 +6,3 @@ type Dog = {
   image: string;
   imageContentType: string;
 };
-
-export default Dog;

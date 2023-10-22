@@ -1,12 +1,12 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import theme from "../theme/theme";
-import HomePage from "../pages/root/HomePage";
-import AppRoutes from "../consts/routes";
-import ReportDogPage from "../pages/dogs/ReportDogPage";
-import SearchDogPage from "../pages/dogs/SearchDogPage";
+import { theme } from "../theme/theme";
+import { HomePage } from "../pages/root/HomePage";
+import { AppRoutes } from "../consts/routes";
+import { ReportDogPage } from "../pages/dogs/ReportDogPage";
+import { SearchDogPage } from "../pages/dogs/SearchDogPage";
 import { createStyleHook } from "../hooks/styleHooks";
-import ResultsDogPage from "../pages/dogs/ResultsDogPage";
+import { ResultsDogPage } from "../pages/dogs/ResultsDogPage";
 import { DogType } from "../facades/payload.types";
 
 const useAppStyles = createStyleHook(() => {
@@ -23,7 +23,7 @@ const useAppStyles = createStyleHook(() => {
   };
 });
 
-const App = () => {
+export const App = () => {
   const styles = useAppStyles();
 
   return (
@@ -56,5 +56,3 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
-export default App;

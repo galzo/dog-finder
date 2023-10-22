@@ -3,7 +3,7 @@ const homePageButtons = {
   foundDog: "אני מצאתי כלב",
 };
 
-const AppTexts = {
+export const AppTexts = {
   authPage: {
     loginCta: "התחבר",
     logoutCta: "התנתק",
@@ -87,5 +87,3 @@ const AppTexts = {
     searchFoundDog: homePageButtons.foundDog,
   },
 };
-
-export default AppTexts;

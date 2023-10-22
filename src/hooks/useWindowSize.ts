@@ -5,7 +5,7 @@ const getWindowSize = () => {
   return { innerWidth, innerHeight };
 };
 
-const useWindowSize = () => {
+export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
   useEffect(() => {
@@ -22,5 +22,3 @@ const useWindowSize = () => {
 
   return windowSize;
 };
-
-export default useWindowSize;

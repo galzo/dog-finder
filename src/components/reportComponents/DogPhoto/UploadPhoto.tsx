@@ -1,10 +1,10 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { IconCameraUp } from "@tabler/icons-react";
 import { ChangeEvent, FC, useCallback, useRef } from "react";
-import AppTexts from "../../../consts/texts";
+import { AppTexts } from "../../../consts/texts";
 import { acceptableFormats } from "../../../consts/formats";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import AppShadows from "../../../consts/shadows";
+import { AppShadows } from "../../../consts/shadows";
 
 interface UploadPhotoProps {
   onSelectImage: (file: File) => Promise<void>;
@@ -39,7 +39,10 @@ const useUploadPhotoStyles = createStyleHook(
   },
 );
 
-const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, isError }) => {
+export const UploadPhoto: FC<UploadPhotoProps> = ({
+  onSelectImage,
+  isError,
+}) => {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const styles = useUploadPhotoStyles({ isError });
   const theme = useTheme();
@@ -87,5 +90,3 @@ const UploadPhoto: FC<UploadPhotoProps> = ({ onSelectImage, isError }) => {
     </Box>
   );
 };
-
-export default UploadPhoto;

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import AppTexts from "../../../consts/texts";
+import { AppTexts } from "../../../consts/texts";
 import { DogType } from "../../../facades/payload.types";
 
 const RTLWrapper: FC<{ children: ReactNode }> = ({ children }) => {
@@ -58,7 +58,7 @@ const useSelectInputStyles = createStyleHook((theme) => {
   };
 });
 
-const SelectInputField: FC<SelectProps> = (props) => {
+export const SelectInputField: FC<SelectProps> = (props) => {
   const styles = useSelectInputStyles();
   return (
     <RTLWrapper>
@@ -76,5 +76,3 @@ const SelectInputField: FC<SelectProps> = (props) => {
     </RTLWrapper>
   );
 };
-
-export default SelectInputField;

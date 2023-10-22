@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { imageMimeType } from "../consts/formats";
 
-const useImageSelection = () => {
+export const useImageSelection = () => {
   const [selectedImage, setSelectedImage] = useState<File>();
   const [imageURL, setImageURL] = useState<string | undefined>();
 
@@ -49,5 +49,3 @@ const useImageSelection = () => {
     clearSelection,
   };
 };
-
-export default useImageSelection;

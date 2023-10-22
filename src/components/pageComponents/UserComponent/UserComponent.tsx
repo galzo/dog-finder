@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Box, Typography } from "@mui/material";
-import LoginButton from "../LoginButton/LoginButton";
-import LogoutButton from "../LogoutButton/LogoutButton";
+import { LoginButton } from "../LoginButton/LoginButton";
+import { LogoutButton } from "../LogoutButton/LogoutButton";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import PageImage from "../PageImage/PageImage";
+import { PageImage } from "../PageImage/PageImage";
 
 const useUserComponentStyles = createStyleHook(() => {
   return {
@@ -19,7 +19,7 @@ const useUserComponentStyles = createStyleHook(() => {
   };
 });
 
-const UserComponent = () => {
+export const UserComponent = () => {
   const { user, isAuthenticated } = useAuth0();
   const styles = useUserComponentStyles();
 
@@ -45,5 +45,3 @@ const UserComponent = () => {
     </Box>
   );
 };
-
-export default UserComponent;

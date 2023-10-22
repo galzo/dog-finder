@@ -1,9 +1,13 @@
 import { Alert, Button, Typography } from "@mui/material";
 import { KeyedMutator } from "swr";
-import AppTexts from "../../consts/texts";
-import Dog from "../../types/Dog";
+import { AppTexts } from "../../consts/texts";
+import { Dog } from "../../types/Dog";
 
-const ErrorLoadingDogs = ({ refresh }: { refresh: KeyedMutator<Dog[]> }) => {
+export const ErrorLoadingDogs = ({
+  refresh,
+}: {
+  refresh: KeyedMutator<Dog[]>;
+}) => {
   return (
     <Alert
       dir="rtl"
@@ -19,5 +23,3 @@ const ErrorLoadingDogs = ({ refresh }: { refresh: KeyedMutator<Dog[]> }) => {
     </Alert>
   );
 };
-
-export default ErrorLoadingDogs;

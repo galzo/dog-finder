@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Box } from "@mui/material";
 import { IconTrash } from "@tabler/icons-react";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import UploadPhoto from "./UploadPhoto";
-import PageImage from "../../pageComponents/PageImage/PageImage";
-import AppShadows from "../../../consts/shadows";
+import { UploadPhoto } from "./UploadPhoto";
+import { PageImage } from "../../pageComponents/PageImage/PageImage";
+import { AppShadows } from "../../../consts/shadows";
 
 const useDogPhotoStyles = createStyleHook(() => {
   return {
@@ -45,7 +45,7 @@ interface DogPhotoProps {
   isError: boolean;
 }
 
-const DogPhoto: FC<DogPhotoProps> = ({
+export const DogPhoto: FC<DogPhotoProps> = ({
   onSelectImage,
   selectedImageUrl,
   clearSelection,
@@ -66,5 +66,3 @@ const DogPhoto: FC<DogPhotoProps> = ({
     </Box>
   );
 };
-
-export default DogPhoto;

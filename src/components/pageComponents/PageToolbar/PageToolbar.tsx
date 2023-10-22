@@ -3,10 +3,10 @@ import { IconGridDots, IconPaw } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import AppRoutes from "../../../consts/routes";
-import AppShadows from "../../../consts/shadows";
-import UserComponent from "../UserComponent/UserComponent";
-import AppTexts from "../../../consts/texts";
+import { AppRoutes } from "../../../consts/routes";
+import { AppShadows } from "../../../consts/shadows";
+import { UserComponent } from "../UserComponent/UserComponent";
+import { AppTexts } from "../../../consts/texts";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
   return {
@@ -39,7 +39,7 @@ const usePageToolbarStyles = createStyleHook((theme) => {
   };
 });
 
-const PageToolbar = () => {
+export const PageToolbar = () => {
   const styles = usePageToolbarStyles();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -97,5 +97,3 @@ const PageToolbar = () => {
     </Box>
   );
 };
-
-export default PageToolbar;

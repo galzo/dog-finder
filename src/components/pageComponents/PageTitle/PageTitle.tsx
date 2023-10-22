@@ -5,7 +5,7 @@ interface PageTitleProps {
   text: string;
 }
 
-const PageTitle: FC<PageTitleProps> = ({ text }) => {
+export const PageTitle: FC<PageTitleProps> = ({ text }) => {
   const theme = useTheme();
   return (
     <Box marginBottom="20px">
@@ -15,5 +15,3 @@ const PageTitle: FC<PageTitleProps> = ({ text }) => {
     </Box>
   );
 };
-
-export default PageTitle;

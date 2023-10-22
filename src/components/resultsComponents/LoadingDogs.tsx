@@ -1,7 +1,7 @@
 import { Typography, useTheme } from "@mui/material";
-import AppTexts from "../../consts/texts";
+import { AppTexts } from "../../consts/texts";
 
-const LoadingDogs = () => {
+export const LoadingDogs = () => {
   const theme = useTheme();
 
   return (
@@ -10,5 +10,3 @@ const LoadingDogs = () => {
     </Typography>
   );
 };
-
-export default LoadingDogs;

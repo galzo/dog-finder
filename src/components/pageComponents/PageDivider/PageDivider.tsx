@@ -1,8 +1,8 @@
 import { Box, alpha } from "@mui/material";
 import { createStyleHook } from "../../../hooks/styleHooks";
-import AppShadows from "../../../consts/shadows";
+import { AppShadows } from "../../../consts/shadows";
 
-const usePageDividerStyles = createStyleHook((theme) => {
+export const usePageDividerStyles = createStyleHook((theme) => {
   return {
     divider: {
       width: "100%",
@@ -15,9 +15,7 @@ const usePageDividerStyles = createStyleHook((theme) => {
   };
 });
 
-const PageDivider = () => {
+export const PageDivider = () => {
   const styles = usePageDividerStyles();
   return <Box sx={styles.divider} />;
 };
-
-export default PageDivider;

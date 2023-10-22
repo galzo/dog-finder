@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 // TODO: can we make an interface out of these hooks?
-const useTextInput = (props: { isMandatoryInput: boolean }) => {
+export const useTextInput = (props: { isMandatoryInput: boolean }) => {
   const [textInput, setTextInput] = useState("");
   const [isInputValid, setIsInputValid] = useState(true);
 
@@ -38,5 +38,3 @@ const useTextInput = (props: { isMandatoryInput: boolean }) => {
     clearInput,
   };
 };
-
-export default useTextInput;

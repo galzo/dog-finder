@@ -39,7 +39,7 @@ const useRTLTextFieldStyles = createStyleHook((theme) => {
   };
 });
 
-const RTLTextField: FC<TextFieldProps> = (props) => {
+export const RTLTextField: FC<TextFieldProps> = (props) => {
   const styles = useRTLTextFieldStyles();
   return (
     <RTLWrapper>
@@ -47,5 +47,3 @@ const RTLTextField: FC<TextFieldProps> = (props) => {
     </RTLWrapper>
   );
 };
-
-export default RTLTextField;

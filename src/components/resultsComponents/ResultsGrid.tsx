@@ -1,10 +1,10 @@
 import { Box, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import DogCard from "./DogCard";
+import { DogCard } from "./DogCard";
 import { DogType } from "../../facades/payload.types";
-import Dog from "../../types/Dog";
-import AppTexts from "../../consts/texts";
-import AppRoutes from "../../consts/routes";
+import { Dog } from "../../types/Dog";
+import { AppTexts } from "../../consts/texts";
+import { AppRoutes } from "../../consts/routes";
 import { createStyleHook } from "../../hooks/styleHooks";
 
 const useResultsStyles = createStyleHook(() => {

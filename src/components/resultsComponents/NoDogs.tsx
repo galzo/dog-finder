@@ -1,7 +1,7 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import AppRoutes from "../../consts/routes";
-import AppTexts from "../../consts/texts";
+import { AppRoutes } from "../../consts/routes";
+import { AppTexts } from "../../consts/texts";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { DogType } from "../../facades/payload.types";
 
@@ -24,7 +24,7 @@ interface NoDogsProps {
   dogType: DogType;
 }
 
-const NoDogs = (props: NoDogsProps) => {
+export const NoDogs = (props: NoDogsProps) => {
   const theme = useTheme();
   const styles = useNoResultsStyles();
   const navigate = useNavigate();
@@ -65,5 +65,3 @@ const NoDogs = (props: NoDogsProps) => {
     </Box>
   );
 };
-
-export default NoDogs;
