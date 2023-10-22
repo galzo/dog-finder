@@ -18,7 +18,7 @@ export const useEmailInput = (props: { isMandatoryInput: boolean }) => {
 
       // Update email
       const newEmail = event.target.value as string;
-      setEmailInput(newEmail);
+      setEmailInput(newEmail.trim());
     },
     []
   );

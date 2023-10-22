@@ -48,7 +48,11 @@ const useReportDogPageStyles = createStyleHook(
   }
 );
 
-export const ReportDogPage = withAuthenticationRequired(() => {
+interface ReportDogPageProps {
+  dogType: DogType
+}
+
+export const ReportDogPage = withAuthenticationRequired((props: ReportDogPageProps) => {
   const { onSelectImage, selectedImageUrl, clearSelection } =
     useImageSelection();
   const [isMissingImage, setIsMissingImage] = useState(false);
@@ -56,6 +60,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [requestStatus, setRequestStatus] = useState<string>("");
+  const { dogType } = props;
 
   const theme = useTheme();
   const styles = useReportDogPageStyles({ isError: showErrorMessage });
@@ -111,7 +116,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
 
     const imageBlob = await getImageBlob(selectedImageUrl);
     const payload: ReportDogPayload = {
-      type: inputs.dogType.value as DogType,
+      type: dogType,
       contactName: inputs.contactName.value,
       contactAdress: inputs.contactAddress.value,
       contactPhone: inputs.contactPhone.value,
@@ -134,11 +139,25 @@ export const ReportDogPage = withAuthenticationRequired(() => {
     clearInputs();
     setIsLoading(false);
   };
+  
+  const getTitle = () => {
+    if (dogType === DogType.LOST) {
+      return AppTexts.reportPage.title.lost;
+    }
+    return AppTexts.reportPage.title.found;
+  };
+
+  const getSuccessMessage = () => {
+    if (dogType === DogType.LOST) {
+      return AppTexts.reportPage.request.success.reportedLost;
+    }
+    return AppTexts.reportPage.request.success.reportedFound;
+  };
 
   return (
     <PageContainer>
       <Box sx={styles.root}>
-        <PageTitle text={AppTexts.reportPage.title} />
+        <PageTitle text={getTitle()} />
         <Snackbar
           open={!!requestStatus}
           autoHideDuration={6000}
@@ -150,7 +169,7 @@ export const ReportDogPage = withAuthenticationRequired(() => {
             sx={{ width: "100%" }}
           >
             {
-              requestStatus === "error" ? AppTexts.reportPage.request.error : AppTexts.reportPage.request.success
+              requestStatus === "error" ? AppTexts.reportPage.request.error : getSuccessMessage()
             }
           </Alert>
         </Snackbar>
@@ -164,14 +183,6 @@ export const ReportDogPage = withAuthenticationRequired(() => {
               clearSelection={clearSelection}
               isError={isMissingImage}
             />
-            <SelectInputField
-              variant="outlined"
-              value={inputs.dogType.value}
-              label={AppTexts.reportPage.dogType.label}
-              onChange={inputs.dogType.onSelectChange}
-              error={!inputs.dogType.isValueValid}
-            />
-
             <RTLTextField
               label={AppTexts.reportPage.dogDetails.dogRace}
               type="text"
