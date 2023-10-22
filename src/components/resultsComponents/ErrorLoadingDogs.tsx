@@ -1,7 +1,7 @@
 import { Alert, Button, Typography } from "@mui/material";
 import { KeyedMutator } from "swr";
 import AppTexts from "../../consts/texts";
-import { Dog } from "./ResultsGrid";
+import Dog from "../../types/Dog";
 
 const ErrorLoadingDogs = ({ refresh }: { refresh: KeyedMutator<Dog[]> }) => {
   return (

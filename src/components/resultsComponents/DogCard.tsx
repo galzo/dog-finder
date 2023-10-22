@@ -1,7 +1,7 @@
 import { Card, CardActions, CardMedia, Link } from "@mui/material";
 import { IconPhone, IconMail, IconUser } from "@tabler/icons-react";
-import AppTexts from "../../consts/texts";
 import Dog from "../../types/Dog";
+import AppTexts from "../../consts/texts";
 
 const linkStyle = { display: "flex", alignItems: "center", gap: "8px" };
 
