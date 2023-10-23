@@ -5,39 +5,39 @@ import { routesWithElements } from "../consts/routes";
 import { createStyleHook } from "../hooks/styleHooks";
 
 const useAppStyles = createStyleHook(() => {
-    return {
-        root: {
-            height: "100%",
-            overflow: "hidden",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            backgroundColor: theme.palette.background.default,
-        },
-    };
+  return {
+    root: {
+      height: "100%",
+      overflow: "hidden",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      backgroundColor: theme.palette.background.default,
+    },
+  };
 });
 
 export const App = () => {
-    const styles = useAppStyles();
+  const styles = useAppStyles();
 
-    return (
-        <ThemeProvider theme={theme}>
-            <Box sx={styles.root}>
-                <BrowserRouter>
-                    <Routes>
-                        {routesWithElements.map((route) => (
-                            <Route
-                                key={route.path}
-                                path={route.path}
-                                element={<route.element {...route.props} />}
-                            />
-                        ))}
-                        {/* //! path without an element */}
-                        {/* <Route path={"/dog-finder/dogs/report"} /> */}
-                    </Routes>
-                </BrowserRouter>
-            </Box>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={theme}>
+      <Box sx={styles.root}>
+        <BrowserRouter>
+          <Routes>
+            {routesWithElements.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.element {...route.props} />}
+              />
+            ))}
+            {/* //! path without an element */}
+            {/* <Route path={"/dog-finder/dogs/report"} /> */}
+          </Routes>
+        </BrowserRouter>
+      </Box>
+    </ThemeProvider>
+  );
 };
