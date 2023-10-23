@@ -1,15 +1,15 @@
 import { Box, Button, ButtonOwnProps } from "@mui/material";
+import { IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
+import { Player } from "@lottiefiles/react-lottie-player";
 import { PageContainer } from "../../components/pageComponents/PageContainer/PageContainer";
 import { createStyleHook } from "../../hooks/styleHooks";
 import { AppTexts } from "../../consts/texts";
-import { IconPaw, IconSearch, TablerIconsProps } from "@tabler/icons-react";
-import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../consts/routes";
-import { Player } from "@lottiefiles/react-lottie-player";
 import dogAnim from "../../assets/animations/dogAnim.json";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-const useHomePageStyles = createStyleHook((theme) => {
+const useHomePageStyles = createStyleHook(() => {
   return {
     root: {
       display: "flex",
@@ -57,19 +57,25 @@ export const HomePage = () => {
     <PageContainer>
       <Box sx={styles.root}>
         <Player
-          autoplay={true}
+          autoplay
           src={dogAnim}
-          loop={true}
+          loop
           style={{
             width: windowSize.innerWidth >= 800 ? "450px" : "300px",
           }}
         />
         <Box sx={styles.content}>
-          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.searchLostDog)}>
+          <Button
+            {...commonButtonProps}
+            onClick={() => navigate(AppRoutes.dogs.searchLostDog)}
+          >
             <IconSearch {...commonIconProps} />
             {AppTexts.homePage.cta.lostDog}
           </Button>
-          <Button {...commonButtonProps} onClick={() => navigate(AppRoutes.dogs.searchFoundDog)}>
+          <Button
+            {...commonButtonProps}
+            onClick={() => navigate(AppRoutes.dogs.searchFoundDog)}
+          >
             <IconPaw {...commonIconProps} />
             {AppTexts.homePage.cta.foundDog}
           </Button>

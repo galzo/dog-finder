@@ -1,7 +1,7 @@
 import { Card, CardActions, CardMedia, Link } from "@mui/material";
-import { AppTexts } from "../../consts/texts";
-import { Dog } from "./ResultsGrid";
 import { IconPhone, IconMail, IconUser } from "@tabler/icons-react";
+import { Dog } from "../../types/Dog";
+import { AppTexts } from "../../consts/texts";
 
 const linkStyle = { display: "flex", alignItems: "center", gap: "8px" };
 
@@ -19,13 +19,13 @@ export const DogCard = ({ dog }: { dog: Dog }) => {
       <CardActions
         style={{ display: "flex", alignItems: "center", gap: "20px" }}
       >
-        <Link
+        <Link // eslint-disable-line
           underline="none"
           href="#"
           style={{
             ...linkStyle,
             cursor: "default",
-            pointerEvents: "none"
+            pointerEvents: "none",
           }}
         >
           <IconUser />

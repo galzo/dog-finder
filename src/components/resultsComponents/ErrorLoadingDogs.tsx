@@ -1,8 +1,7 @@
-import React from "react";
 import { Alert, Button, Typography } from "@mui/material";
-import { AppTexts } from "../../consts/texts";
 import { KeyedMutator } from "swr";
-import { Dog } from "./ResultsGrid";
+import { AppTexts } from "../../consts/texts";
+import { Dog } from "../../types/Dog";
 
 export const ErrorLoadingDogs = ({
   refresh,

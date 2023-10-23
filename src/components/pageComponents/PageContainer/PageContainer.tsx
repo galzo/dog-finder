@@ -1,5 +1,5 @@
 import { Box, Fade } from "@mui/material";
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 import { PageToolbar } from "../PageToolbar/PageToolbar";
 
@@ -7,7 +7,7 @@ interface IPageContainerProps {
   children: ReactNode;
 }
 
-const usePageContainerStyles = createStyleHook((theme) => {
+export const usePageContainerStyles = createStyleHook(() => {
   return {
     root: {
       width: "100%",

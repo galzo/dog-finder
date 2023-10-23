@@ -1,11 +1,11 @@
 import { Box, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
-import { createStyleHook } from "../../../hooks/styleHooks";
 import { IconGridDots, IconPaw } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { createStyleHook } from "../../../hooks/styleHooks";
 import { AppRoutes } from "../../../consts/routes";
 import { AppShadows } from "../../../consts/shadows";
-import UserComponent from "../UserComponent/UserComponent";
-import { useState } from "react";
+import { UserComponent } from "../UserComponent/UserComponent";
 import { AppTexts } from "../../../consts/texts";
 
 const usePageToolbarStyles = createStyleHook((theme) => {
@@ -26,16 +26,16 @@ const usePageToolbarStyles = createStyleHook((theme) => {
       position: "absolute",
       left: 20,
       borderRadius: 0,
-      "&:hover, &.Mui-focusVisible": { 
-        backgroundColor: theme.palette.primary.light
+      "&:hover, &.Mui-focusVisible": {
+        backgroundColor: theme.palette.primary.light,
       },
     },
     menuItem: {
-      "&:hover, &.Mui-focusVisible": { 
-        backgroundColor: theme.palette.primary.light
+      "&:hover, &.Mui-focusVisible": {
+        backgroundColor: theme.palette.primary.light,
       },
       backgroundColor: theme.palette.background.paper,
-    }
+    },
   };
 });
 
@@ -68,33 +68,32 @@ export const PageToolbar = () => {
         size={60}
         onClick={() => navigate(AppRoutes.root)}
       />
-      <IconButton
-                onClick={handleOpenMenu}
-                sx={styles.menuButton}
-            >
-          <IconGridDots
-            strokeWidth={1.5}
-            color={theme.palette.text.primary}
-          />
+      <IconButton onClick={handleOpenMenu} sx={styles.menuButton}>
+        <IconGridDots strokeWidth={1.5} color={theme.palette.text.primary} />
       </IconButton>
-      <Menu
-              open={isMenuOpen}
-              onClose={handleCloseMenu}
-              anchorEl={anchorEl}
-          >
-              <MenuItem onClick={() => navigate(AppRoutes.root)} sx={styles.menuItem}>
-                {AppTexts.navigation.home}
-              </MenuItem>
-              <MenuItem onClick={() => navigate(AppRoutes.dogs.searchLostDog)} sx={styles.menuItem}>
-                {AppTexts.navigation.searchLostDog}
-              </MenuItem>
-              <MenuItem onClick={() => navigate(AppRoutes.dogs.searchFoundDog)} sx={styles.menuItem}>
-                {AppTexts.navigation.searchFoundDog}
-              </MenuItem>
-              <MenuItem onClick={() => navigate(AppRoutes.dogs.reportFound)} sx={styles.menuItem}>
-                {AppTexts.navigation.reportFound}
-              </MenuItem>
-          </Menu>
+      <Menu open={isMenuOpen} onClose={handleCloseMenu} anchorEl={anchorEl}>
+        <MenuItem onClick={() => navigate(AppRoutes.root)} sx={styles.menuItem}>
+          {AppTexts.navigation.home}
+        </MenuItem>
+        <MenuItem
+          onClick={() => navigate(AppRoutes.dogs.searchLostDog)}
+          sx={styles.menuItem}
+        >
+          {AppTexts.navigation.searchLostDog}
+        </MenuItem>
+        <MenuItem
+          onClick={() => navigate(AppRoutes.dogs.searchFoundDog)}
+          sx={styles.menuItem}
+        >
+          {AppTexts.navigation.searchFoundDog}
+        </MenuItem>
+        <MenuItem
+          onClick={() => navigate(AppRoutes.dogs.reportFound)}
+          sx={styles.menuItem}
+        >
+          {AppTexts.navigation.reportFound}
+        </MenuItem>
+      </Menu>
     </Box>
   );
 };

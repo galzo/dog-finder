@@ -1,12 +1,12 @@
 import { FC } from "react";
+import { Box } from "@mui/material";
+import { IconTrash } from "@tabler/icons-react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 import { UploadPhoto } from "./UploadPhoto";
 import { PageImage } from "../../pageComponents/PageImage/PageImage";
-import { Box, Button } from "@mui/material";
-import { IconTrash } from "@tabler/icons-react";
 import { AppShadows } from "../../../consts/shadows";
 
-const useDogPhotoStyles = createStyleHook((theme) => {
+const useDogPhotoStyles = createStyleHook(() => {
   return {
     root: {
       width: "100%",
@@ -45,11 +45,16 @@ interface DogPhotoProps {
   isError: boolean;
 }
 
-export const DogPhoto: FC<DogPhotoProps> = ({ onSelectImage, selectedImageUrl, clearSelection, isError }) => {
+export const DogPhoto: FC<DogPhotoProps> = ({
+  onSelectImage,
+  selectedImageUrl,
+  clearSelection,
+  isError,
+}) => {
   const styles = useDogPhotoStyles();
 
   if (!selectedImageUrl) {
-    return <UploadPhoto onSelectImage={onSelectImage} selectedImageUrl={selectedImageUrl} isError={isError} />;
+    return <UploadPhoto onSelectImage={onSelectImage} isError={isError} />;
   }
 
   return (

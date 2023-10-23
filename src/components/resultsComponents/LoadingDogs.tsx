@@ -1,5 +1,5 @@
-import { AppTexts } from "../../consts/texts";
 import { Typography, useTheme } from "@mui/material";
+import { AppTexts } from "../../consts/texts";
 
 export const LoadingDogs = () => {
   const theme = useTheme();

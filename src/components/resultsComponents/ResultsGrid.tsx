@@ -1,31 +1,23 @@
 import { Box, Button, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { DogCard } from "./DogCard";
 import { DogType } from "../../facades/payload.types";
+import { Dog } from "../../types/Dog";
 import { AppTexts } from "../../consts/texts";
 import { AppRoutes } from "../../consts/routes";
-import { useNavigate } from "react-router-dom";
 import { createStyleHook } from "../../hooks/styleHooks";
-
-export type Dog = {
-  dogId: string;
-  contactPhone: string;
-  contactName: string;
-  contactEmail: string;
-  image: string;
-  imageContentType: string;
-};
 
 const useResultsStyles = createStyleHook(() => {
   return {
     buttonContainer: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "center"
-    }
-  }
+      justifyContent: "center",
+    },
+  };
 });
 
-export const ResultsGrid = ({
+const ResultsGrid = ({
   results,
   dogType,
 }: {
@@ -63,9 +55,16 @@ export const ResultsGrid = ({
         })}
       </Grid>
       <Box sx={styles.buttonContainer}>
-        <Button size="large" variant="contained" onClick={() => navigate(getButtonNavigationRoute())}>{getButtonText()}</Button>   
+        <Button
+          size="large"
+          variant="contained"
+          onClick={() => navigate(getButtonNavigationRoute())}
+        >
+          {getButtonText()}
+        </Button>
       </Box>
-
     </>
   );
 };
+
+export default ResultsGrid;

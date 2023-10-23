@@ -1,4 +1,11 @@
-import { SelectProps, alpha, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import {
+  SelectProps,
+  alpha,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 import { FC, ReactNode } from "react";
 import { createStyleHook } from "../../../hooks/styleHooks";
 import { AppTexts } from "../../../consts/texts";
@@ -14,40 +21,40 @@ const RTLWrapper: FC<{ children: ReactNode }> = ({ children }) => {
 const useSelectInputStyles = createStyleHook((theme) => {
   return {
     root: {
-      '& .MuiFormLabel-root': {
+      "& .MuiFormLabel-root": {
         left: "unset",
         right: "1.75rem",
         transformOrigin: "right",
         fontSize: "0.8rem",
       },
-      '& .MuiSvgIcon-root': {
+      "& .MuiSvgIcon-root": {
         color: theme.palette.primary.contrastText,
-        left: '7px',
-        right: 'unset',
+        left: "7px",
+        right: "unset",
       },
-      '& .MuiSelect-select': {
-        paddingLeft: '32px',
-        paddingRight: '14px !important',
+      "& .MuiSelect-select": {
+        paddingLeft: "32px",
+        paddingRight: "14px !important",
       },
-      '& legend': {
+      "& legend": {
         textAlign: "right",
         fontSize: "0.6rem",
-      }
+      },
     },
     select: {
-        width: "500px",
+      width: "500px",
+      borderColor: alpha(theme.palette.primary.main, 0.6),
+      color: "#FFFFFF",
+      "& .MuiOutlinedInput-notchedOutline": {
         borderColor: alpha(theme.palette.primary.main, 0.6),
-        color: "#FFFFFF",
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: alpha(theme.palette.primary.main, 0.6),
-        },
-        "@media (max-width: 500px)": {
-          width: "375px",
-        },
-        "@media (max-width: 400px)": {
-          width: "300px",
-        },
-      }
+      },
+      "@media (max-width: 500px)": {
+        width: "375px",
+      },
+      "@media (max-width: 400px)": {
+        width: "300px",
+      },
+    },
   };
 });
 
@@ -58,10 +65,14 @@ export const SelectInputField: FC<SelectProps> = (props) => {
       <FormControl sx={styles.root}>
         <InputLabel>{AppTexts.reportPage.dogType.label}</InputLabel>
         <Select {...props} sx={styles.select}>
-            <MenuItem value={DogType.LOST} dir="rtl">{AppTexts.reportPage.dogType.lost}</MenuItem>
-            <MenuItem value={DogType.FOUND} dir="rtl">{AppTexts.reportPage.dogType.found}</MenuItem>
+          <MenuItem value={DogType.LOST} dir="rtl">
+            {AppTexts.reportPage.dogType.lost}
+          </MenuItem>
+          <MenuItem value={DogType.FOUND} dir="rtl">
+            {AppTexts.reportPage.dogType.found}
+          </MenuItem>
         </Select>
       </FormControl>
-      </RTLWrapper>
+    </RTLWrapper>
   );
 };

@@ -1,8 +1,6 @@
-import React from "react";
-import logo from "./logo.svg";
 import { Box, ThemeProvider } from "@mui/material";
-import { theme } from "../theme/theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { theme } from "../theme/theme";
 import { HomePage } from "../pages/root/HomePage";
 import { AppRoutes } from "../consts/routes";
 import { ReportDogPage } from "../pages/dogs/ReportDogPage";
@@ -28,7 +26,6 @@ const useAppStyles = createStyleHook(() => {
 export const App = () => {
   const styles = useAppStyles();
 
-
   return (
     <ThemeProvider theme={theme}>
       <Box sx={styles.root}>
@@ -36,10 +33,22 @@ export const App = () => {
           <Routes>
             <Route path={AppRoutes.root} element={<HomePage />} />
             <Route path={AppRoutes.dogs.report} />
-            <Route path={AppRoutes.dogs.reportLost} element={<ReportDogPage dogType={DogType.LOST}/>} />
-            <Route path={AppRoutes.dogs.reportFound} element={<ReportDogPage dogType={DogType.FOUND}/>} />
-            <Route path={AppRoutes.dogs.searchLostDog} element={<SearchDogPage dogType={DogType.LOST}/>} />
-            <Route path={AppRoutes.dogs.searchFoundDog} element={<SearchDogPage  dogType={DogType.FOUND}/>} />
+            <Route
+              path={AppRoutes.dogs.reportLost}
+              element={<ReportDogPage dogType={DogType.LOST} />}
+            />
+            <Route
+              path={AppRoutes.dogs.reportFound}
+              element={<ReportDogPage dogType={DogType.FOUND} />}
+            />
+            <Route
+              path={AppRoutes.dogs.searchLostDog}
+              element={<SearchDogPage dogType={DogType.LOST} />}
+            />
+            <Route
+              path={AppRoutes.dogs.searchFoundDog}
+              element={<SearchDogPage dogType={DogType.FOUND} />}
+            />
             <Route path={AppRoutes.dogs.results} element={<ResultsDogPage />} />
           </Routes>
         </BrowserRouter>

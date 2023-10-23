@@ -1,36 +1,34 @@
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../consts/routes";
 import { AppTexts } from "../../consts/texts";
-import { Box, Button, Typography, useTheme } from "@mui/material";
 import { createStyleHook } from "../../hooks/styleHooks";
-import { useNavigate } from "react-router-dom";
 import { DogType } from "../../facades/payload.types";
 
-const useNoResultsStyles = createStyleHook((theme) => { 
+const useNoResultsStyles = createStyleHook(() => {
   return {
     button: {
-      width: "200px"
+      width: "200px",
     },
     content: {
       display: "flex",
       flexDirection: "column",
-      alignItems: "center", 
+      alignItems: "center",
       justifyContent: "center",
-      gap: "20px"
-    }
+      gap: "20px",
+    },
   };
 });
 
 interface NoDogsProps {
-  dogType: DogType
-};
-
+  dogType: DogType;
+}
 
 export const NoDogs = (props: NoDogsProps) => {
   const theme = useTheme();
   const styles = useNoResultsStyles();
   const navigate = useNavigate();
   const { dogType } = props;
-
 
   const getButtonText = () => {
     if (dogType === DogType.FOUND) {
@@ -49,7 +47,6 @@ export const NoDogs = (props: NoDogsProps) => {
     return AppRoutes.dogs.reportLost;
   };
 
-
   return (
     <Box sx={styles.content}>
       <Box>
@@ -57,9 +54,14 @@ export const NoDogs = (props: NoDogsProps) => {
           {AppTexts.resultsPage.noResults.title}
         </Typography>
       </Box>
-      <Button size="large" variant="contained" sx={styles.button} onClick={() => navigate(getButtonNavigationRoute())}>
-          {getButtonText()}
-      </Button> 
+      <Button
+        size="large"
+        variant="contained"
+        sx={styles.button}
+        onClick={() => navigate(getButtonNavigationRoute())}
+      >
+        {getButtonText()}
+      </Button>
     </Box>
   );
 };
